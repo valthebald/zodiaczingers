@@ -26,14 +26,14 @@ enum Sign : string {
       self::Taurus => '♉︎',
       self::Gemini =>  '♊︎',
       self::Cancer => '♋︎',
-      self::Leo => '♌',
-      self::Virgo => '♍',
+      self::Leo => '♌︎',
+      self::Virgo => '♍︎',
       self::Libra => '♎︎',
-      self::Scorpio => '♏',
-      self::Sagittarius => '︎︎♐',
-      self::Capricorn => '︎︎♑',
-      self::Aquarius => '♒',
-      self::Pisces => '♓',
+      self::Scorpio => '♏︎',
+      self::Sagittarius => '︎︎♐︎',
+      self::Capricorn => '︎︎♑︎',
+      self::Aquarius => '♒︎',
+      self::Pisces => '♓︎',
     };
   }
 
