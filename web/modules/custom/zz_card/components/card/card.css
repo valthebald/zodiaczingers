@@ -1,0 +1,23 @@
+/* Card Styles */
+.card {
+  background-color: #1b263b;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+}
+.card .zodiac-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.card .zodiac-name {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.card .horoscope-text {
+  font-size: 16px;
+  color: #d1d5db;
+}

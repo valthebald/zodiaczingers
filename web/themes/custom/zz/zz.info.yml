@@ -1,0 +1,22 @@
+name: zz
+type: theme
+'base theme': stable9
+version: 1.0.0
+libraries:
+  - zz/base
+  - zz/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - zz/user
+  core/drupal.dropbutton:
+    - zz/dropbutton
+  core/drupal.dialog:
+    - zz/dialog
+  file/drupal.file:
+    - zz/file
+  core/drupal.progress:
+    - zz/progress
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.0.5'

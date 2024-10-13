@@ -1,0 +1,8 @@
+zz_card.card:
+  path: '/card/{sign}/{date}'
+  defaults:
+    _controller: '\Drupal\zz_card\Controller\CardController:card'
+    _title: ''
+    date: ''
+  requirements:
+    _permission: 'access content'

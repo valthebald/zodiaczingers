@@ -1,0 +1,38 @@
+# This is so your IDE knows about the syntax for fixes and autocomplete.
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+
+# Human-readable name.
+name: Horoscope card
+
+# Status can be: "experimental", "stable", "deprecated", "obsolete".
+status: stable
+
+# Schema for the props. We support www.json-schema.org. Learn more about the
+# syntax there.
+props:
+  # Props are always an object with keys. Each key is a variable in your
+  # component template.
+  type: object
+
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Wrapper attributes.
+    sign:
+      type: string
+      title: Sign
+    icon:
+      type: string
+      title: Icon
+    title:
+      title: Title
+      type: string
+    subtitle:
+      title: Subtitle
+      type: string
+
+slots:
+  bg_image:
+    title: Background image
+

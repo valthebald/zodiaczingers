@@ -1,0 +1,7 @@
+name: 'ZZ: Card'
+type: module
+description: 'Horoscope card'
+core_version_requirement: ^11
+package: 'Zodiac zingers'
+interface translation project: zz_card
+interface translation server pattern: modules/custom/%project/translations/%project.%language.po
