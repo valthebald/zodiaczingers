@@ -31,6 +31,9 @@ props:
     subtitle:
       title: Subtitle
       type: string
+    content:
+      title: Content
+      type: string
 
 slots:
   bg_image:
