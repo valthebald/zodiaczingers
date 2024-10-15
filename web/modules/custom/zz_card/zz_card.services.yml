@@ -1,0 +1,7 @@
+services:
+  zz_card.generator:
+    class: '\Drupal\zz_card\HoroscopeGenerator'
+    arguments:
+      - '@ai.provider'
+      - '@config.factory'
+      - '@twig'

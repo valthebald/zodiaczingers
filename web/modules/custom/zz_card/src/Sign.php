@@ -37,5 +37,4 @@ enum Sign : string {
     };
   }
 
-
 }
