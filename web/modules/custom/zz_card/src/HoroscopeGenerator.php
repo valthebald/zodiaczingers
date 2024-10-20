@@ -27,13 +27,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class HoroscopeGenerator {
 
   /**
-   * The module handler for the hooks.
-   *
-   * @var Drupal\Core\Extension\ModuleHandler
-   */
-  protected $moduleHandler;
-
-  /**
    * @param \Drupal\ai\AiProviderPluginManager $aiProviderManager
    *   AI provider plugin manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
@@ -76,7 +69,7 @@ PROMPT;
     ]);
     try {
       $messages = new ChatInput([
-        new chatMessage('system', 'You are a horoscope maker.'),
+        new chatMessage('system', 'You are an astrologist.'),
         new chatMessage('user', $promptText),
       ]);
 
