@@ -4,12 +4,24 @@ namespace Drupal\zz_card\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\zz_card\HoroscopeGenerator;
 use Drupal\zz_card\Sign;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CardController extends ControllerBase {
 
   use StringTranslationTrait;
+
+  public function __construct(
+    protected HoroscopeGenerator $horoscopeGenerator) { }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static($container->get('zz_card.horoscope_generator'));
+  }
 
   /**
    * The horoscope card.
@@ -26,30 +38,29 @@ class CardController extends ControllerBase {
     if (!$real) {
       throw new NotFoundHttpException();
     }
-    /** @var \Drupal\zz_card\HoroscopeGenerator $generator */
-    $generator = \Drupal::service('zz_card.generator');
-    $candidate = \Drupal::entityTypeManager()->getStorage('zz_card')
+    $card = \Drupal::entityTypeManager()->getStorage('zz_card')
       ->loadBySignAndDate($real->value, (int) $date);
-    if (!$candidate) {
-      $content = $generator->generateHoroscope($real);
-      $candidate = \Drupal::entityTypeManager()->getStorage('zz_card')
-        ->create([
-          'card_date' => (int) $date,
-          'sign' => $real->value,
-          'content' => $content,
-        ]);
-      $candidate->save();
+    if (!$card) {
+      $content = $this->horoscopeGenerator->generateHoroscope($real);
+      $cardStorage = $this->entityTypeManager()
+        ->getStorage('zz_card');
+      $card = $cardStorage->create([
+        'card_date' => (int) $date,
+        'sign' => $real->value,
+        'content' => $content,
+      ]);
+      $cardStorage->save($card);
     }
     return [
       '#cache' => [
-        'tags' => $candidate->getCacheTags(),
+        'tags' => $card->getCacheTags(),
       ],
       '#type' => 'component',
       '#component' => 'zz_card:card',
       '#props' => [
         'sign_name' => $sign,
         'icon' => $real->icon(),
-        'content' => $candidate->get('content')->getValue()[0]['value'],
+        'content' => $card->get('content')->getValue()[0]['value'],
         'title' => $real->name,
       ],
       '#slots' => [],
