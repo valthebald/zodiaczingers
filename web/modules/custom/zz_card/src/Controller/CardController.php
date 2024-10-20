@@ -20,7 +20,7 @@ class CardController extends ControllerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static($container->get('zz_card.horoscope_generator'));
+    return new static($container->get('zz_card.generator'));
   }
 
   /**
