@@ -3,5 +3,8 @@ type: module
 description: 'Horoscope card'
 core_version_requirement: ^11
 package: 'Zodiac zingers'
+dependencies:
+  - ai:ai
+  - ai:ai_translate
 interface translation project: zz_card
 interface translation server pattern: modules/custom/%project/translations/%project.%language.po
