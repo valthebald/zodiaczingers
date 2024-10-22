@@ -14,7 +14,6 @@ body {
 }
 /* Sticky Header Styles */
 header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1b263b;
@@ -74,6 +73,9 @@ footer {
   width: 100%;
   position: sticky;
   bottom: 0;
+  a {
+    color: white;
+  }
 }
 /* Responsive Styles */
 @media (max-width: 768px) {

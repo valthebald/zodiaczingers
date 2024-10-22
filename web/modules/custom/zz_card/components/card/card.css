@@ -20,4 +20,5 @@
 .card .horoscope-text {
   font-size: 16px;
   color: #d1d5db;
+  text-align: justify;
 }

@@ -62,7 +62,7 @@ class HoroscopeGenerator {
     $prompt =<<<PROMPT
 Write a horoscope for today for {{ sign }}. Horoscope should consist of 2 paragraphs
 of text of average length.
-Return the result as HTML fragment (i.e., wrap paragraphs in with <p> tag)".
+Talk about the sign in the third person.
 PROMPT;
     $promptText = $this->twig->renderInline($prompt, [
       'sign' => $sign->name,
