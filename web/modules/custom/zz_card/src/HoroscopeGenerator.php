@@ -63,6 +63,8 @@ class HoroscopeGenerator {
 Write a horoscope for today for {{ sign }}. Horoscope should consist of 2 paragraphs
 of text of average length.
 Talk about the sign in the third person.
+The horoscope will be available in the future, so do not assume it is "today".
+Instead, use placeholders for the current day of the week as [weekday] and the date as [date].
 PROMPT;
     $promptText = $this->twig->renderInline($prompt, [
       'sign' => $sign->name,
@@ -81,7 +83,12 @@ PROMPT;
       return $exception->getMessage();
     }
     $cleaned = trim(trim($message->getText(), '```'), ' ');
-    return trim($cleaned, '"');
+    $cleaned = trim($cleaned, '"');
+    return str_replace(
+      ['[weekday]', '[date]'],
+      [date('l'), date('F j, Y')],
+      $cleaned
+    );
   }
 
   /**

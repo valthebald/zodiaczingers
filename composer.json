@@ -22,6 +22,8 @@
         "drupal/core-composer-scaffold": "^11.0",
         "drupal/core-project-message": "^11.0",
         "drupal/core-recommended": "^11.0",
+        "drupal/devel": "^5.3",
+        "drupal/metatag": "^2.0",
         "drupal/project_browser": "^1.0@beta",
         "drush/drush": "^13.3"
     },

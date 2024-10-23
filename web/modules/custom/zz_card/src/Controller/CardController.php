@@ -51,7 +51,6 @@ class CardController extends ControllerBase {
       ]);
       $cardStorage->save($card);
     }
-    $content = $card->get('content')->getValue()[0];
     return [
       '#cache' => [
         'tags' => $card->getCacheTags(),
@@ -66,7 +65,7 @@ class CardController extends ControllerBase {
       '#slots' => [
         'content' => [
           '#type' => 'processed_text',
-          '#text' => $content['value'],
+          '#text' => $card->get('content')->value,
         ],
       ],
     ];
