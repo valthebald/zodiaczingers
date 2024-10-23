@@ -48,6 +48,12 @@
         "sort-packages": true
     },
     "extra": {
+        "patches-file": "composer.patches.json",
+        "composer-patches-skip-reporting": true,
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"

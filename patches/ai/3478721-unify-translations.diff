@@ -1,0 +1,690 @@
+diff --git a/modules/ai_translate/ai_translate.services.yml b/modules/ai_translate/ai_translate.services.yml
+index 36c511c1ff34777da6cd74d819867a66f19f3370..d4f9dbe2da1af02c1521c55e77892f1ee4a321c2 100644
+--- a/modules/ai_translate/ai_translate.services.yml
++++ b/modules/ai_translate/ai_translate.services.yml
+@@ -9,6 +9,15 @@ services:
+       - '@entity_type.manager'
+       - '@entity_field.manager'
+       - '@plugin.manager.text_extractor'
++  ai_translate.text_translator:
++    class: Drupal\ai_translate\TextTranslator
++    arguments:
++      - '@entity_type.manager'
++      - '@language_manager'
++      - '@config.factory'
++      - '@ai.provider'
++      - '@twig'
++      - '@module_handler'
+   plugin.manager.text_extractor:
+     class: Drupal\ai_translate\FieldTextExtractorPluginManager
+     parent: default_plugin_manager
+diff --git a/modules/ai_translate/src/Controller/AiTranslateController.php b/modules/ai_translate/src/Controller/AiTranslateController.php
+index 2a590b6f688280ecd8e149a9102d9599ffd6db06..3467402dcbc1e6a2c97f5c99f12a9d3b521d91f5 100644
+--- a/modules/ai_translate/src/Controller/AiTranslateController.php
++++ b/modules/ai_translate/src/Controller/AiTranslateController.php
+@@ -2,20 +2,15 @@
+ 
+ namespace Drupal\ai_translate\Controller;
+ 
++use Drupal\ai_translate\TextExtractorInterface;
++use Drupal\ai_translate\TextTranslatorInterface;
+ use Drupal\Core\Batch\BatchBuilder;
+-use Drupal\Core\Config\ImmutableConfig;
+ use Drupal\Core\Controller\ControllerBase;
+ use Drupal\Core\DependencyInjection\DependencySerializationTrait;
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Language\LanguageInterface;
+-use Drupal\Core\Template\TwigEnvironment;
+ use Drupal\Core\Url;
+-use Drupal\ai\AiProviderPluginManager;
+-use Drupal\ai\OperationType\Chat\ChatInput;
+-use Drupal\ai\OperationType\Chat\ChatMessage;
+-use Drupal\ai_translate\TextExtractorInterface;
+ use Drupal\filter\Entity\FilterFormat;
+-use GuzzleHttp\Exception\GuzzleException;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ use Symfony\Component\HttpFoundation\RedirectResponse;
+ 
+@@ -26,27 +21,6 @@ class AiTranslateController extends ControllerBase {
+ 
+   use DependencySerializationTrait;
+ 
+-  /**
+-   * AI module configuration.
+-   *
+-   * @var \Drupal\Core\Config\ImmutableConfig
+-   */
+-  protected ImmutableConfig $aiConfig;
+-
+-  /**
+-   * AI provider plugin manager.
+-   *
+-   * @var \Drupal\ai\AiProviderPluginManager
+-   */
+-  protected AiProviderPluginManager $aiProviderManager;
+-
+-  /**
+-   * Twig engine.
+-   *
+-   * @var \Drupal\Core\Template\TwigEnvironment
+-   */
+-  protected TwigEnvironment $twig;
+-
+   /**
+    * Text extractor service.
+    *
+@@ -55,11 +29,11 @@ class AiTranslateController extends ControllerBase {
+   protected TextExtractorInterface $textExtractor;
+ 
+   /**
+-   * The module handler for the hooks.
++   * Text translator service.
+    *
+-   * @var Drupal\Core\Extension\ModuleHandler
++   * @var \Drupal\ai_translate\TextTranslatorInterface
+    */
+-  protected $moduleHandler;
++  protected TextTranslatorInterface $aiTranslator;
+ 
+   /**
+    * {@inheritdoc}
+@@ -68,11 +42,8 @@ class AiTranslateController extends ControllerBase {
+     $instance = new static();
+     $instance->entityTypeManager = $container->get('entity_type.manager');
+     $instance->languageManager = $container->get('language_manager');
+-    $instance->aiConfig = $container->get('config.factory')->get('ai.settings');
+-    $instance->aiProviderManager = $container->get('ai.provider');
+-    $instance->twig = $container->get('twig');
+     $instance->textExtractor = $container->get('ai_translate.text_extractor');
+-    $instance->moduleHandler = $container->get('module_handler');
++    $instance->aiTranslator = $container->get('ai_translate.text_translator');
+     return $instance;
+   }
+ 
+@@ -138,96 +109,6 @@ class AiTranslateController extends ControllerBase {
+     return batch_process($redirectUrl);
+   }
+ 
+-  /**
+-   * Get the text translated by AI API call.
+-   *
+-   * @param string $input_text
+-   *   Input prompt for the LLm.
+-   * @param \Drupal\Core\Language\LanguageInterface $langFrom
+-   *   Source language.
+-   * @param \Drupal\Core\Language\LanguageInterface $langTo
+-   *   Destination language.
+-   *
+-   * @return string
+-   *   Translated content.
+-   */
+-  public function translateContent(
+-    string $input_text,
+-    LanguageInterface $langFrom,
+-    LanguageInterface $langTo,
+-  ) {
+-    $preferred_model = $this->config('ai_translate.settings')->get($langTo->id() . '_model');
+-    $provider_config = $this->getSetProvider($preferred_model, 'chat');
+-    $provider = $provider_config['provider_id'];
+-    $prompt = $this->config('ai_translate.settings')->get($langTo->id() . '_prompt');
+-    if (empty($prompt)) {
+-      $prompt = $this->config('ai_translate.settings')->get('prompt');
+-    }
+-    $promptText = $this->twig->renderInline($prompt, [
+-      'source_lang' => $langFrom->getId(),
+-      'source_lang_name' => $langFrom->getName(),
+-      'dest_lang' => $langTo->getId(),
+-      'dest_lang_name' => $langTo->getName(),
+-      'input_text' => $input_text,
+-    ]);
+-    try {
+-      $messages = new ChatInput([
+-        new chatMessage('system', 'You are helpful translator. '),
+-        new chatMessage('user', $promptText),
+-      ]);
+-
+-      // Allow other modules to take over.
+-      $this->moduleHandler->alter('ai_translate_translation', $messages, $provider, $provider_config['model_id']);
+-
+-      /** @var /Drupal\ai\OperationType\Chat\ChatOutput $message */
+-      $message = $provider->chat($messages, $provider_config['model_id'])->getNormalized();
+-    }
+-    catch (GuzzleException $exception) {
+-      // Error handling for the API call.
+-      return $exception->getMessage();
+-    }
+-    $cleaned = trim(trim($message->getText(), '```'), ' ');
+-    return trim($cleaned, '"');
+-  }
+-
+-  /**
+-   * Get the preferred provider if configured, else take the default one.
+-   *
+-   * @param string $preferred_model
+-   *   The preferred model as a string.
+-   * @param string $operationType
+-   *   The operation type (like chat).
+-   *
+-   * @return array|null
+-   *   An array with the model and provider.
+-   *
+-   * @throws \Drupal\Component\Plugin\Exception\PluginException
+-   *   An exception.
+-   */
+-  public function getSetProvider($preferred_model, $operationType) {
+-    // Check if there is a preferred model.
+-    $provider = NULL;
+-    $model = NULL;
+-    if ($preferred_model) {
+-      $provider = $this->aiProviderManager->loadProviderFromSimpleOption($preferred_model);
+-      $model = $this->aiProviderManager->getModelNameFromSimpleOption($preferred_model);
+-    }
+-    else {
+-      // Get the default provider.
+-      $default_provider = $this->aiProviderManager->getDefaultProviderForOperationType($operationType);
+-      if (empty($default_provider['provider_id'])) {
+-        // If we got nothing return NULL.
+-        return NULL;
+-      }
+-      $provider = $this->aiProviderManager->createInstance($default_provider['provider_id']);
+-      $model = $default_provider['model_id'];
+-    }
+-    return [
+-      'provider_id' => $provider,
+-      'model_id' => $model,
+-    ];
+-  }
+-
+   /**
+    * Finished operation.
+    */
+@@ -257,9 +138,8 @@ class AiTranslateController extends ControllerBase {
+     array &$context,
+   ) {
+     // Translate the content.
+-    $translated_text = $this->translateContent(
+-      $singleText['value'], $langFrom, $langTo
+-    );
++    $translated_text = $this->aiTranslator->translateContent(
++      $singleText['value'], $langTo, $langFrom);
+ 
+     // Checks if the field allows HTML and decodes the HTML entities.
+     if (isset($singleText['format'])) {
+diff --git a/modules/ai_translate/src/Drush/AiTranslateCommands.php b/modules/ai_translate/src/Drush/AiTranslateCommands.php
+index acd6cdb0367576bc1592c01e91dfea8c5057ad65..b13b154adf301a4aa489165a42c228b1d4c50c2d 100644
+--- a/modules/ai_translate/src/Drush/AiTranslateCommands.php
++++ b/modules/ai_translate/src/Drush/AiTranslateCommands.php
+@@ -2,12 +2,13 @@
+ 
+ namespace Drupal\ai_translate\Drush;
+ 
++use Drupal\ai_translate\TextTranslatorInterface;
++use Drupal\ai_translate\TranslationException;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Language\LanguageManagerInterface;
+ use Drupal\Core\Logger\LoggerChannelTrait;
+ use Drupal\Core\Messenger\MessengerTrait;
+ use Drupal\Core\StringTranslation\StringTranslationTrait;
+-use Drupal\ai_translate\Controller\AiTranslateController;
+ use Drupal\ai_translate\TextExtractorInterface;
+ use Drush\Attributes\Argument;
+ use Drush\Attributes\Command;
+@@ -45,11 +46,9 @@ class AiTranslateCommands extends DrushCommands {
+   protected TextExtractorInterface $textExtractor;
+ 
+   /**
+-   * Translate controller.
+-   *
+-   * @var \Drupal\ai_translate\Controller\AiTranslateController
++   * @var \Drupal\ai_translate\TextTranslatorInterface
+    */
+-  protected AiTranslateController $translateController;
++  protected TextTranslatorInterface $textTranslator;
+ 
+   /**
+    * {@inheritdoc}
+@@ -59,8 +58,7 @@ class AiTranslateCommands extends DrushCommands {
+     $instance->languageManager = $container->get('language_manager');
+     $instance->entityTypeManager = $container->get('entity_type.manager');
+     $instance->textExtractor = $container->get('ai_translate.text_extractor');
+-    $instance->translateController = \Drupal::classResolver(AiTranslateController::class
+-    );
++    $instance->textTranslator = $container->get('ai_translate.text_translator');
+     return $instance;
+   }
+ 
+@@ -68,13 +66,13 @@ class AiTranslateCommands extends DrushCommands {
+    * Create AI-powered translation of an entity.
+    */
+   #[Command(
+-    name: 'ai:translate'
++    name: 'ai:translate-entity'
+   )]
+   #[Argument(name: 'entityType', description: 'Entity type (i.e. node)')]
+   #[Argument(name: 'entityId', description: 'Entity ID (i.e. 16)')]
+   #[Argument(name: 'langFrom', description: 'Source language code (i.e. fr)')]
+   #[Argument(name: 'langTo', description: 'Target language code (i.e. en)')]
+-  public function translate(
++  public function translateEntity(
+     string $entityType,
+     string $entityId,
+     string $langFrom,
+@@ -84,8 +82,6 @@ class AiTranslateCommands extends DrushCommands {
+     if (empty($langNames)) {
+       $langNames = $this->languageManager->getNativeLanguages();
+     }
+-    $langFromName = $langNames[$langFrom]->getName();
+-    $langToName = $langNames[$langTo]->getName();
+     $entity = $this->entityTypeManager->getStorage($entityType)
+       ->load($entityId);
+     if ($entity->language()->getId() !== $langFrom
+@@ -99,8 +95,15 @@ class AiTranslateCommands extends DrushCommands {
+     }
+     $textMetadata = $this->textExtractor->extractTextMetadata($entity);
+     foreach ($textMetadata as &$singleText) {
+-      $singleText['translated'] = $this->translateController
+-        ->translateContent($singleText['value'], $langFromName, $langToName);
++      try {
++        $singleText['translated'] = $this->textTranslator->translateContent(
++          $singleText['value'], $langNames[$langTo], $langNames[$langFrom] ?? NULL);
++      }
++      catch (TranslationException) {
++        // Error already logged by text_translate service.
++        $this->messenger()->addError('Error translating content.');
++        return;
++      }
+     }
+     $translation = $entity->addTranslation($langTo);
+     $this->textExtractor->insertTextMetadata($translation,
+@@ -116,4 +119,33 @@ class AiTranslateCommands extends DrushCommands {
+ 
+   }
+ 
++  /**
++   * Create AI-powered translation of a text.
++   */
++  #[Command(
++    name: 'ai:translate-text'
++  )]
++  #[Argument(name: 'text', description: 'Text to translate')]
++  #[Argument(name: 'langTo', description: 'Target language code (i.e. en)')]
++  #[Argument(name: 'langFrom', description: 'Source language code (i.e. fr)')]
++  public function translate(
++    string $text,
++    string $langFrom,
++    string $langTo,
++  ) {
++    static $langNames;
++    if (empty($langNames)) {
++      $langNames = $this->languageManager->getNativeLanguages();
++    }
++    try {
++      return $this->textTranslator->translateContent($text,
++          $langNames[$langTo], $langNames[$langFrom] ?? NULL);
++      }
++    catch (TranslationException) {
++      // Error already logged by text_translate service.
++      $this->messenger()->addError('Error translating content.');
++      return;
++    }
++  }
++
+ }
+diff --git a/modules/ai_translate/src/Plugin/AiProvider/ChatTranslationProvider.php b/modules/ai_translate/src/Plugin/AiProvider/ChatTranslationProvider.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..64ef221d4a9e57e2c1f778e0c2f105a65d796b06
+--- /dev/null
++++ b/modules/ai_translate/src/Plugin/AiProvider/ChatTranslationProvider.php
+@@ -0,0 +1,225 @@
++<?php
++
++namespace Drupal\ai_translate\Plugin\AiProvider;
++
++use Drupal\ai\AiProviderPluginManager;
++use Drupal\ai\OperationType\TranslateText\TranslateTextInput;
++use Drupal\ai\OperationType\TranslateText\TranslateTextInterface;
++use Drupal\ai\OperationType\TranslateText\TranslateTextOutput;
++use Drupal\ai\Plugin\ProviderProxy;
++use Drupal\Core\Config\ImmutableConfig;
++use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
++use Drupal\Core\StringTranslation\StringTranslationTrait;
++use Drupal\Core\StringTranslation\TranslatableMarkup;
++use Drupal\ai\Attribute\AiProvider;
++use Drupal\ai\Base\AiProviderClientBase;
++use Drupal\ai\Enum\AiProviderCapability;
++use Drupal\ai\OperationType\Chat\ChatInput;
++use Drupal\ai\OperationType\Chat\ChatMessage;
++use Drupal\Core\Template\TwigEnvironment;
++use Drupal\language\Entity\ConfigurableLanguage;
++use GuzzleHttp\Exception\GuzzleException;
++use Symfony\Component\DependencyInjection\ContainerInterface;
++
++/**
++ * Plugin implementation of the 'chat_translation' provider.
++ *
++ * The purpose is to implement 'translate_text' operation
++ * using more generic 'chat' operation supported by many LLM providers.
++ */
++#[AiProvider(
++  id: 'chat_translation',
++  label: new TranslatableMarkup('Chat proxy to LLM'),
++)]
++class ChatTranslationProvider extends AiProviderClientBase implements
++  ContainerFactoryPluginInterface,
++  TranslateTextInterface {
++
++  use StringTranslationTrait;
++
++  /**
++   * AI provider plugin manager.
++   *
++   * @var \Drupal\ai\AiProviderPluginManager
++   */
++  protected AiProviderPluginManager $manager;
++
++  /**
++   * Configuration of default chat provider.
++   *
++   * @var array
++   */
++  protected array $chatConfiguration;
++
++  /**
++   * Lazy-loaded provider that actually performs text translation.
++   *
++   * @var \Drupal\ai\Plugin\ProviderProxy
++   */
++  protected ProviderProxy $realTranslator;
++
++  /**
++   * The Twig engine.
++   *
++   * @var \Drupal\Core\Template\TwigEnvironment
++   */
++  protected TwigEnvironment $twig;
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
++    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
++    $instance->manager = $container->get('ai.provider');
++    $instance->twig = $container->get('twig');
++    return $instance;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function isUsable(?string $operation_type = NULL, array $capabilities = []): bool {
++    if (!isset($this->chatConfiguration)) {
++      $defaultProviders = $this->configFactory->get('ai.settings')
++        ->get('default_providers');
++      if (empty($defaultProviders)) {
++        $this->chatConfiguration = [];
++      }
++      $this->chatConfiguration = $defaultProviders['chat'] ?? [];
++    }
++    return !empty($this->chatConfiguration)
++      && in_array($operation_type, $this->getSupportedOperationTypes());
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getSupportedOperationTypes(): array {
++    return [
++      'translate_text',
++    ];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getSupportedCapabilities(): array {
++    return [
++      AiProviderCapability::StreamChatOutput,
++    ];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getConfig(): ImmutableConfig {
++    return $this->configFactory->get('ai.settings');
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getConfiguredModels(?string $operation_type = NULL, array $capabilities = []): array {
++    return ['default' => $this->t('default')];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getApiDefinition(): array {
++    return [];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function getModelSettings(string $model_id, array $generalConfig = []): array {
++    // This provider does not have model settings.
++    return [];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function setAuthentication(mixed $authentication): void {}
++
++  /**
++   * {@inheritdoc}
++   */
++  public function translateText(TranslateTextInput $input, string $model_id, array $options = []): TranslateTextOutput {
++    $text = $input->getText();
++
++    $sourceLanguage = ConfigurableLanguage::load($input->getSourceLanguage());
++    if (!$sourceLanguage) {
++      $sourceLanguage = ConfigurableLanguage::create([
++        'id' => $input->getSourceLanguage(),
++        'label' => 'Autodetect',
++      ]);
++    }
++    // We can guess source, but not target language.
++    $targetLanguage = ConfigurableLanguage::load($input->getTargetLanguage());
++    if (!$targetLanguage) {
++      // @todo TranslateText-specific exception, documented in
++      // TranslateTextInterface::translateText() docblock.
++      $this->loggerFactory->get('ai_translate')->warning(
++        $this->t('Unable to guess target language, code @langcode',
++          ['@langcode' => $input->getTargetLanguage()]));
++      return new TranslateTextOutput('', '', '');
++    }
++
++    $aiConfig = $this->configFactory->get('ai_translate.settings');
++    $prompt = $aiConfig->get($sourceLanguage->getId() . '_prompt');
++    if (empty($prompt)) {
++      $prompt = $aiConfig->get('prompt');
++    }
++    $promptText = $this->twig->renderInline($prompt, [
++      'source_lang' => $sourceLanguage->getId(),
++      'source_lang_name' => $sourceLanguage->getName(),
++      'dest_lang' => $targetLanguage->getId(),
++      'dest_lang_name' => $targetLanguage->getName(),
++      'input_text' => $text,
++    ]);
++    try {
++      $messages = new ChatInput([
++        new chatMessage('system', 'You are a helpful translator. '),
++        new chatMessage('user', $promptText),
++      ]);
++
++      // Allow other modules to take over.
++      $this->moduleHandler->alter('ai_translate_translation', $messages, $provider, $provider_config['model_id']);
++
++      $this->loadTranslator();
++      /** @var /Drupal\ai\OperationType\Chat\ChatOutput $message */
++      $message = $this->realTranslator->chat($messages, $this->chatConfiguration['model_id']);
++    }
++    catch (GuzzleException $exception) {
++      // Error handling for the API call.
++      $this->loggerFactory->get('ai_translate')
++        ->warning($exception->getMessage());
++      return new TranslateTextOutput('', '', '');
++    }
++
++    return new TranslateTextOutput($message->getNormalized()->getText(),
++      $message->getRawOutput(), []);
++  }
++
++  /**
++   * Load real translator and its configuration.
++   *
++   * @return \Drupal\ai\Plugin\ProviderProxy|null
++   *   Real provider or NULL on failure.
++   *
++   * @throws \Drupal\Component\Plugin\Exception\PluginException
++   */
++  protected function loadTranslator() :? ProviderProxy {
++    if (isset($this->realTranslator)) {
++      return $this->realTranslator;
++    }
++    $this->chatConfiguration = $this->manager
++      ->getDefaultProviderForOperationType('chat');
++    $this->realTranslator = $this->manager->createInstance(
++      $this->chatConfiguration['provider_id'], $this->chatConfiguration);
++    return $this->realTranslator;
++  }
++
++}
+diff --git a/modules/ai_translate/src/TextTranslator.php b/modules/ai_translate/src/TextTranslator.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..2d79ba89aac697489238779e79ded761015f5a47
+--- /dev/null
++++ b/modules/ai_translate/src/TextTranslator.php
+@@ -0,0 +1,66 @@
++<?php
++
++namespace Drupal\ai_translate;
++
++use Drupal\ai\OperationType\TranslateText\TranslateTextInput;
++use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Config\ImmutableConfig;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Extension\ModuleHandlerInterface;
++use Drupal\Core\Language\LanguageInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\Logger\LoggerChannelTrait;
++use Drupal\Core\Template\TwigEnvironment;
++use Drupal\ai\AiProviderPluginManager;
++
++/**
++ * Defines text translator service.
++ */
++class TextTranslator implements TextTranslatorInterface {
++
++  use LoggerChannelTrait;
++
++  /**
++   * AI module configuration.
++   *
++   * @var \Drupal\Core\Config\ImmutableConfig
++   */
++  protected ImmutableConfig $aiConfig;
++
++  public function __construct(
++    protected EntityTypeManagerInterface $entityTypeManager,
++    protected LanguageManagerInterface $languageManager,
++    protected ConfigFactoryInterface $configFactory,
++    protected AiProviderPluginManager $aiProviderManager,
++    protected TwigEnvironment $twig,
++    protected ModuleHandlerInterface $moduleHandler) {
++    $this->aiConfig = $this->configFactory->get('ai.settings');
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function translateContent(
++    string $input_text,
++    LanguageInterface $langTo,
++    LanguageInterface $langFrom = NULL
++  ) : string {
++    try {
++      /** @var \Drupal\ai\OperationType\TranslateText\TranslateTextInterface $provider */
++      $providerConfig = $this->aiProviderManager->getDefaultProviderForOperationType('translate_text');
++      $provider = $this->aiProviderManager->createInstance($providerConfig['provider_id'], $providerConfig);
++      $translation = $provider->translateText(
++        new TranslateTextInput($input_text, $langFrom->getId(), $langTo->getId()),
++        'default'
++      );
++
++      $cleaned = trim(trim($translation->getNormalized(), '```'), ' ');
++      return trim($cleaned, '"');
++    }
++    catch (\Throwable $e) {
++      $this->getLogger('ai_translate')->error($e->getMessage());
++      throw new TranslationException($e->getMessage());
++    }
++  }
++
++}
+diff --git a/modules/ai_translate/src/TextTranslatorInterface.php b/modules/ai_translate/src/TextTranslatorInterface.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..01b3c0cdab2ea025029e7f42cffc25bf4448258e
+--- /dev/null
++++ b/modules/ai_translate/src/TextTranslatorInterface.php
+@@ -0,0 +1,35 @@
++<?php
++
++namespace Drupal\ai_translate;
++
++use Drupal\Core\Language\LanguageInterface;
++
++/**
++ * Defines text translator interface.
++ */
++interface TextTranslatorInterface {
++
++  /**
++   * Get the text translated by AI API call.
++   *
++   * @param string $input_text
++   *   Input prompt for the LLm.
++   * @param \Drupal\Core\Language\LanguageInterface $langTo
++   *   Destination language.
++   * @param \Drupal\Core\Language\LanguageInterface|NULL $langFrom
++   *   Source language.
++   *
++   * Lang from is an optional argument, thus the order of to/lang arguments.
++   *
++   * @return string
++   *   Translated content.
++   *@throws \Drupal\ai_translate\TranslationException
++   *
++   */
++  public function translateContent(
++    string $input_text,
++    LanguageInterface $langTo,
++    LanguageInterface $langFrom = NULL,
++  ) : string;
++
++}
+diff --git a/modules/ai_translate/src/TranslationException.php b/modules/ai_translate/src/TranslationException.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..250624fab03205e569ce9cc909a9135ad86795d8
+--- /dev/null
++++ b/modules/ai_translate/src/TranslationException.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace Drupal\ai_translate;
++
++/**
++ * Defines translation exception.
++ */
++class TranslationException extends \Exception {}

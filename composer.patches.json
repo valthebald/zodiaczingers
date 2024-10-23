@@ -1,0 +1,7 @@
+{
+  "patches": {
+    "drupal/ai": {
+      "3478721 - Unify translate operations": "patches/ai/3478721-unify-translations.diff"
+    }
+  }
+}
