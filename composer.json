@@ -19,6 +19,7 @@
         "drupal/admin_toolbar": "^3.5",
         "drupal/ai": "^1.0@alpha",
         "drupal/automatic_updates": "^3.1",
+        "drupal/cloudflare": "^2.0.0-beta1",
         "drupal/core-composer-scaffold": "^11.0",
         "drupal/core-project-message": "^11.0",
         "drupal/core-recommended": "^11.0",
