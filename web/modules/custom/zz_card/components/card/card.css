@@ -7,14 +7,6 @@
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
-
-  a {
-    padding-right: 1rem;
-    color: white;
-    &.is-active {
-      font-weight: bolder;
-    }
-  }
 }
 .card .zodiac-icon {
   font-size: 50px;

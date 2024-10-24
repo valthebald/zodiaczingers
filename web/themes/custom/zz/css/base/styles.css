@@ -57,10 +57,21 @@ header {
   padding: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
-.language-selector select {
-  background-color: #1b263b;
-  border: none;
-  color: #ffffff;
+
+/** Language selector */
+.language-selector a {
+  display: inline-block;
+  margin-right: 1rem;
+  color: white;
+  &.is-active {
+    font-weight: bolder;
+    background-color: white;
+    color: #1b263b;
+    border-radius: 15px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+  }
 }
 
 /* Sticky Footer Styles */

@@ -1,0 +1,5 @@
+card_fetcher:
+  js:
+    js/lazy-card.js: {}
+  dependencies:
+    - core/drupal

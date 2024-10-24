@@ -6,3 +6,11 @@ zz_card.card:
     date: ''
   requirements:
     _permission: 'access content'
+
+zz_card.card_ajax_checker:
+  path: '/card/{sign}/{date}/load'
+  defaults:
+    _controller: '\Drupal\zz_card\Controller\CardController:cardLoadWhenReady'
+    _title: ''
+  requirements:
+    _permission: 'access content'
