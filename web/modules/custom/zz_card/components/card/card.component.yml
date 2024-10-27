@@ -14,7 +14,7 @@ props:
   # component template.
   type: object
 
-  props:
+  properties:
     attributes:
       type: Drupal\Core\Template\Attribute
       title: Attributes

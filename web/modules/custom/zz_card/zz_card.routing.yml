@@ -1,3 +1,11 @@
+zz_card.card_auto:
+  path: '/card'
+  defaults:
+    _controller: '\Drupal\zz_card\Controller\CardController::guessCard'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
 zz_card.card:
   path: '/card/{sign}/{date}'
   defaults:

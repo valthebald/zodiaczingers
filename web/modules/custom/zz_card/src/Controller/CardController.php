@@ -3,11 +3,15 @@
 namespace Drupal\zz_card\Controller;
 
 use Drupal\ai_translate\TextTranslatorInterface;
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheableJsonResponse;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Cache\CacheableRedirectResponse;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Render\Renderer;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\zz_card\HoroscopeGenerator;
 use Drupal\zz_card\Sign;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,6 +23,7 @@ class CardController extends ControllerBase {
   use StringTranslationTrait;
 
   public function __construct(
+    protected TimeInterface $time,
     protected HoroscopeGenerator $horoscopeGenerator,
     protected TextTranslatorInterface $textTranslator,
     protected Renderer $renderer,
@@ -29,11 +34,33 @@ class CardController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
+      $container->get('datetime.time'),
       $container->get('zz_card.generator'),
       $container->get('ai_translate.text_translator'),
       $container->get('renderer'),
     );
   }
+
+  public function guessCard() {
+    $now = $this->time->getCurrentTime();
+    // Refresh at the beginning of the next day.
+    $refreshAt = mktime(0, 0, 0, date('n', $now) + 1,
+      date('j', $now), date('Y', $now));
+    $maxAge = $refreshAt - $now;
+
+    $url = Url::fromRoute('zz_card.card', [
+      'sign' => Sign::fromDate($now)->value,
+      'date' => date('Ymd', $refreshAt),
+    ]);
+    $meta = CacheableMetadata::createFromObject($url);
+    $meta->setCacheMaxAge($maxAge);
+    $redirect = new CacheableRedirectResponse($url->setAbsolute(TRUE)->toString());
+    $redirect->addCacheableDependency($meta);
+    $redirect->setMaxAge($maxAge);
+    $redirect->setStatusCode(302);
+    return $redirect;
+  }
+
 
   /**
    * The horoscope card.
@@ -59,7 +86,7 @@ class CardController extends ControllerBase {
       // be rebuilt when the card is in database, so that we can save one AJAX
       // call.
       '#cache' => [
-        'tags' => ['zz_card_list']
+        'tags' => ['zz_card_list'],
       ],
       '#type' => 'component',
       '#component' => 'zz_card:card',
@@ -80,7 +107,7 @@ class CardController extends ControllerBase {
       ],
       '#attached' => [
         'library' => ['zz_card/card_fetcher'],
-      ]
+      ],
     ];
     $card = \Drupal::entityTypeManager()->getStorage('zz_card')
       ->loadBySignAndDate($real->value, (int) $date);
