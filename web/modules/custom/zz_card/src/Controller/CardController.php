@@ -41,39 +41,19 @@ class CardController extends ControllerBase {
     );
   }
 
-  public function guessCard() {
-    $now = $this->time->getCurrentTime();
-    // Refresh at the beginning of the next day.
-    $refreshAt = mktime(0, 0, 0, date('n', $now) + 1,
-      date('j', $now), date('Y', $now));
-    $maxAge = $refreshAt - $now;
-
-    $url = Url::fromRoute('zz_card.card', [
-      'sign' => Sign::fromDate($now)->value,
-      'date' => date('Ymd', $refreshAt),
-    ]);
-    $meta = CacheableMetadata::createFromObject($url);
-    $meta->setCacheMaxAge($maxAge);
-    $redirect = new CacheableRedirectResponse($url->setAbsolute(TRUE)->toString());
-    $redirect->addCacheableDependency($meta);
-    $redirect->setMaxAge($maxAge);
-    $redirect->setStatusCode(302);
-    return $redirect;
-  }
-
-
   /**
    * The horoscope card.
    *
-   * @param Sign $sign
+   * @param string $sign
    *   Sign to show horoscope for.
    * @param string $date
    *
    * @return array
    *   Render array.
    */
-  public function card($sign, $date = '') {
-    $real = Sign::tryFrom($sign);
+  public function card(string $sign, $date = '') {
+    $real = ('auto' === $sign) ? Sign::fromDate($this->time->getCurrentTime())
+      : Sign::tryFrom($sign);
     if (!$real) {
       throw new NotFoundHttpException();
     }
