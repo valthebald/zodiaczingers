@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * ZodiacZingers module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function zz_card_cron() {
+  // Clear homepage cache when the day changes.
+  // @todo: switch this to the new Hooks system.
+  $time = \Drupal::time()->getRequestTime();
+  $currentDay = date('Ymd', $time);
+  $lastRun = \Drupal::state()->get('zz_card_last_run', 0);
+  if (date('Ymd', $lastRun) < $currentDay) {
+    \Drupal::service('cache_tags.invalidator')
+      ->invalidateTags(['zz_card_list']);
+    \Drupal::state()->set('zz_card_last_run', $time);
+  }
+}

@@ -57,6 +57,7 @@ class CardController extends ControllerBase {
     if (!$real) {
       throw new NotFoundHttpException();
     }
+    $dateGuess = empty($date);
     if (!$date) {
       $date = date('Ymd');
     }
@@ -66,7 +67,7 @@ class CardController extends ControllerBase {
       // be rebuilt when the card is in database, so that we can save one AJAX
       // call.
       '#cache' => [
-        'tags' => ['zz_card_list'],
+        'tags' => [],
       ],
       '#type' => 'component',
       '#component' => 'zz_card:card',
@@ -96,14 +97,17 @@ class CardController extends ControllerBase {
         // Cannot generate horoscopes for the past dates.
         throw new NotFoundHttpException();
       }
+      $build['#cache']['tags'][] = 'zz_card_list';
       return $build;
     }
     if ($card->hasTranslation($currentLanguage->getId())) {
       $card = $card->getTranslation($currentLanguage->getId());
     }
     else {
-      $build['#cache']['tags'] = Cache::mergeTags($build['#cache']['tags'],
-        $card->getCacheTags());
+      $build['#cache']['tags'] = $card->getCacheTags();
+      if ($dateGuess) {
+        $build['#cache']['tags'][] = 'zz_card_list';
+      }
       return $build;
     }
 
@@ -112,6 +116,9 @@ class CardController extends ControllerBase {
       'max-age' => Cache::PERMANENT,
       'tags' => $card->getCacheTags(),
     ];
+    if ($dateGuess) {
+      $build['#cache']['tags'][] = 'zz_card_list';
+    }
     $build['#slots']['content'] = [
       '#type' => 'processed_text',
       '#text' => $card->get('content')->value,
