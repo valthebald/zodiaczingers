@@ -90,7 +90,7 @@ footer {
 }
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .menu, .language-selector {
+  .menu {
     display: none;
   }
   .hamburger {
