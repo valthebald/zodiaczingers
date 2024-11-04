@@ -30,6 +30,10 @@ h1.card-header {
   margin: 20px auto;
 }
 
+.card a {
+  color: white;
+}
+
 /* Sticky Header Styles */
 header {
   justify-content: space-between;
