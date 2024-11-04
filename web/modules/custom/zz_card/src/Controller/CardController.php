@@ -217,21 +217,18 @@ class CardController extends ControllerBase {
       ],
       '#items' => [],
     ];
-    $linkDefault = [
-      '#type' => 'link',
-      '#url' =>  Url::fromRoute('zz_card.card', [
-        'date' => $date,
-      ]),
-    ];
+    $linkDefault = ['#type' => 'link'];
     foreach (Sign::cases() as $sign) {
       $dates = $sign->getDates();
       $link = [
-        '#wrapper_attributes' => ['class' => []],
         '#title' => $sign->icon() . ' ' . $this->t($sign->name) . ' (' .
           $this->t(self::MONTH_NAMES[$dates['startMonth']]) . ' ' . $dates['startDay'] . ' - ' .
           $this->t(self::MONTH_NAMES[$dates['endMonth']]) . ' ' . $dates['endDay'] . ')',
       ] + $linkDefault;
-      $link['#url']->setRouteParameter('sign', $sign->value);
+      $link['#url'] = Url::fromRoute('zz_card.card', [
+        'date' => $date,
+        'sign' => $sign->value,
+      ]);
       if ($sign->value === $currentSign->value) {
         $link['#wrapper_attributes']['class'][] = 'active';
       }
