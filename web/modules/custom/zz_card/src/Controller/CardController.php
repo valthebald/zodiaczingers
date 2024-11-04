@@ -305,7 +305,7 @@ class CardController extends ControllerBase {
     $weekday = $this->t(date('l', $timestamp));
     $month = $this->t(date('F', $timestamp));
     return $this->t('Horoscope for @weekday', ['@weekday' => $weekday])
-      . '<br  />' . date('d.m.Y', $timestamp);
+      . ', ' . date('d.m.Y', $timestamp);
     return $this->t('Horoscope for @weekday, @month @day, @year', [
       '@weekday' => $weekday,
       '@month' => $month,
