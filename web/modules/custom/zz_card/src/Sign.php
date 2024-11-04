@@ -38,6 +38,89 @@ enum Sign : string {
   }
 
   /**
+   * Start and end dates of a sign.
+   *
+   * @return string[]
+   *   Start and end dates in format "F d".
+   */
+  public function getDates() : array {
+    return match ($this) {
+      self::Aries => [
+        'startMonth' => 3,
+        'startDay' => 21,
+        'endMonth' => 4,
+        'endDay' => 19,
+        ],
+      self::Taurus => [
+        'startMonth' => 4,
+        'startDay' => 20,
+        'endMonth' => 5,
+        'endDay' => 20,
+      ],
+      self::Gemini => [
+        'startMonth' => 5,
+        'startDay' => 21,
+        'endMonth' => 6,
+        'endDay' => 21,
+      ],
+      self::Cancer => [
+        'startMonth' => 6,
+        'startDay' => 22,
+        'endMonth' => 7,
+        'endDay' => 22,
+      ],
+      self::Leo => [
+        'startMonth' => 7,
+        'startDay' => 23,
+        'endMonth' => 8,
+        'endDay' => 22,
+      ],
+      self::Virgo => [
+        'startMonth' => 8,
+        'startDay' => 23,
+        'endMonth' => 9,
+        'endDay' => 22,
+      ],
+      self::Libra => [
+        'startMonth' => 9,
+        'startDay' => 23,
+        'endMonth' => 10,
+        'endDay' => 23,
+      ],
+      self::Scorpio => [
+        'startMonth' => 10,
+        'startDay' => 24,
+        'endMonth' => 11,
+        'endDay' => 21,
+      ],
+      self::Sagittarius => [
+        'startMonth' => 11,
+        'startDay' => 22,
+        'endMonth' => 12,
+        'endDay' => 21,
+      ],
+      self::Capricorn => [
+        'startMonth' => 12,
+        'startDay' => 22,
+        'endMonth' => 1,
+        'endDay' => 19,
+      ],
+      self::Aquarius => [
+        'startMonth' => 1,
+        'startDay' => 20,
+        'endMonth' => 2,
+        'endDay' => 18,
+      ],
+      self::Pisces => [
+        'startMonth' => 2,
+        'startDay' => 19,
+        'endMonth' => 3,
+        'endDay' => 20,
+      ],
+    };
+  }
+
+  /**
    * Returns Sign given a timestamp.
    *
    * @param int $timestamp

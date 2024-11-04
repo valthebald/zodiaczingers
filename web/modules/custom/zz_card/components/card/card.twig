@@ -1,7 +1,6 @@
 {# Horoscope Card #}
 <div class="card">
-  {# Sign is lower case code like pisces, icon is an unicode character presenting the sign, #}
-  <div class="zodiac-icon {{ sign }}">{{ icon }}</div>
-  <div class="zodiac-name">{{ title|trans}}</div>
+  {% if header %}{{ header }}{% endif %}
+  {% embed 'zz_card:card-header' %}{% endembed %}
   <div class="horoscope-text">{% block content %}{% endblock %}</div>
 </div>

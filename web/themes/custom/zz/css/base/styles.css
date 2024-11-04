@@ -12,6 +12,24 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+h1.card-header {
+  font-size: 1.5em;
+}
+
+/**
+ * General purpose box with rounded
+ */
+.box {
+  background-color: #1b263b;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+}
+
 /* Sticky Header Styles */
 header {
   justify-content: space-between;

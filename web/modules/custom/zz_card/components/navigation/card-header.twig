@@ -1,0 +1,14 @@
+{# Horoscope header #}
+{# Sign is lower case code like pisces, icon is an unicode character presenting the sign, #}
+<div class="zodiac-icon {{ sign }}">{{ icon }}</div>
+<div class="zodiac-name">{{ title|trans}}</div>
+{% if sign_dates %}
+<div class="zodiac-name">{{ sign_dates.start }} - {{ sign_dates.end }}</div>
+{% endif %}
+{% if date_links %}
+<nav class="other-dates">
+  {% for link in date_links %}
+    {{ link|render }}
+  {% endfor %}
+</nav>
+{% endif %}

@@ -3,6 +3,10 @@ base:
   css:
     base:
       css/base/styles.css: {}
+item-list:
+  css:
+    component:
+      css/components/item-list.css: {}
 dialog:
   version: VERSION
   css:
