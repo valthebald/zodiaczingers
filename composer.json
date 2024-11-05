@@ -28,6 +28,8 @@
         "drupal/metatag": "^2.0",
         "drupal/project_browser": "^1.0@beta",
         "drupal/purge": "^3.6",
+        "drupal/robotstxt": "^1.6",
+        "drupal/simple_sitemap": "^4.2",
         "drush/drush": "^13.3"
     },
     "conflict": {
