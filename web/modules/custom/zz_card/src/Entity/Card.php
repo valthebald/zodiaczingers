@@ -4,6 +4,8 @@ namespace Drupal\zz_card\Entity;
 
 
 use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\Core\Entity\EntityPublishedInterface;
+use Drupal\Core\Entity\EntityPublishedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 
@@ -45,7 +47,9 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   }
  * )
  */
-class Card extends ContentEntityBase {
+class Card extends ContentEntityBase implements EntityPublishedInterface {
+
+  use EntityPublishedTrait;
 
   /**
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
@@ -54,6 +58,10 @@ class Card extends ContentEntityBase {
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
+    $fields += self::publishedBaseFieldDefinitions($entity_type);
+    // Initial value is needed because status field didn't exist initially.
+    $fields['status']->setInitialValue(TRUE)
+      ->setDefaultValue(TRUE);
     $fields['sign'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Zodiac sign'))
       ->setDescription(t('The zodiac sign.'))
@@ -63,14 +71,10 @@ class Card extends ContentEntityBase {
         'weight' => -5,
       ])
       ->addConstraint('ZodiacSign', [])
-      // @todo: should this be read only field?
-      // ->setReadOnly(FALSE)
       ->setTranslatable(FALSE);
     $fields['card_date'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Zodiac sign'))
       ->setDescription(t('The zodiac sign.'))
-      // @todo: should this be read only field?
-      // ->setReadOnly(FALSE)
       ->setTranslatable(FALSE);
     $fields['content'] = BaseFieldDefinition::create('text_long')
       ->setLabel(t('Horoscope content'))

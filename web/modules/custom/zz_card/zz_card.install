@@ -1,0 +1,25 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Add missing "status" field.
+ */
+function zz_card_update_11001(&$sandbox) {
+  $definition_manager = \Drupal::entityDefinitionUpdateManager();
+  $changeList = $definition_manager->getChangeList();
+  if (empty($changeList['zz_card'])
+   || empty($changeList['zz_card']['field_storage_definitions']['status'])) {
+    return;
+  }
+  $fieldDefinition = BaseFieldDefinition::create('boolean')
+    ->setLabel(new TranslatableMarkup('Published'))
+    ->setInitialValue(TRUE)
+    ->setRevisionable(TRUE)
+    ->setTranslatable(TRUE)
+    ->setDefaultValue(TRUE);
+  $definition_manager->installFieldStorageDefinition('status',
+    'zz_card', 'zz_card', $fieldDefinition);
+
+}
