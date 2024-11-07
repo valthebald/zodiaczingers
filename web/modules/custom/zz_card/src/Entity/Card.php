@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityPublishedInterface;
 use Drupal\Core\Entity\EntityPublishedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Url;
 
 /**
  * Defines the node entity class.
@@ -80,6 +81,18 @@ class Card extends ContentEntityBase implements EntityPublishedInterface {
       ->setLabel(t('Horoscope content'))
       ->setTranslatable(TRUE);
     return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toUrl($rel = NULL, array $options = []) {
+    // Cannot use parent logic, because this entity does not have canonical
+    // URL template (or it doesn't make sense).
+    return Url::fromRoute('zz_card.card', [
+      'date' => $this->get('card_date')->getString(),
+      'sign' => $this->get('sign')->getString(),
+    ]);
   }
 
 }

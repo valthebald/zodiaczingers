@@ -26,6 +26,7 @@
         "drupal/core-recommended": "^11.0",
         "drupal/devel": "^5.3",
         "drupal/metatag": "^2.0",
+        "drupal/pathauto": "^1.13",
         "drupal/project_browser": "^1.0@beta",
         "drupal/purge": "^3.6",
         "drupal/robotstxt": "^1.6",
