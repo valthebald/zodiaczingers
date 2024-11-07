@@ -9,9 +9,13 @@
 ul.sign-list {
   list-style: none;
   text-align: left;
-  li a {
-    color: white;
-    text-decoration: none;
+  li {
+    /** Accessibility requirement. Touch target should be big enough  **/
+    margin: 1rem 0;
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
   li.active a {
     font-weight: bolder;
