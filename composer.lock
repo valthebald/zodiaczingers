@@ -2052,16 +2052,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "11.0.7",
+            "version": "11.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "c5e71f3eb04d3dfb93cfb74e38a876f9290e6462"
+                "reference": "fcbed03ceda6482c8e5cf87544505739b2f70a7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/c5e71f3eb04d3dfb93cfb74e38a876f9290e6462",
-                "reference": "c5e71f3eb04d3dfb93cfb74e38a876f9290e6462",
+                "url": "https://api.github.com/repos/drupal/core/zipball/fcbed03ceda6482c8e5cf87544505739b2f70a7a",
+                "reference": "fcbed03ceda6482c8e5cf87544505739b2f70a7a",
                 "shasum": ""
             },
             "require": {
@@ -2211,13 +2211,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/11.0.7"
+                "source": "https://github.com/drupal/core/tree/11.0.9"
             },
-            "time": "2024-11-12T09:49:41+00:00"
+            "time": "2024-11-22T12:46:31+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "11.0.7",
+            "version": "11.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2261,13 +2261,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.0.7"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.0.9"
             },
             "time": "2024-08-22T14:31:26+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "11.0.7",
+            "version": "11.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -2302,22 +2302,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/11.0.7"
+                "source": "https://github.com/drupal/core-project-message/tree/11.1.0-beta1"
             },
             "time": "2023-07-24T07:55:25+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "11.0.7",
+            "version": "11.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "777942228b60193ca58e96f15aa3d094eb5ae305"
+                "reference": "6912d6567c28017b8550d70730755f3a8270d3b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/777942228b60193ca58e96f15aa3d094eb5ae305",
-                "reference": "777942228b60193ca58e96f15aa3d094eb5ae305",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/6912d6567c28017b8550d70730755f3a8270d3b2",
+                "reference": "6912d6567c28017b8550d70730755f3a8270d3b2",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2326,7 @@
                 "doctrine/annotations": "~2.0.1",
                 "doctrine/deprecations": "~1.1.3",
                 "doctrine/lexer": "~2.1.1",
-                "drupal/core": "11.0.7",
+                "drupal/core": "11.0.9",
                 "egulias/email-validator": "~4.0.2",
                 "guzzlehttp/guzzle": "~7.9.2",
                 "guzzlehttp/promises": "~2.0.3",
@@ -2386,9 +2386,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/11.0.7"
+                "source": "https://github.com/drupal/core-recommended/tree/11.0.9"
             },
-            "time": "2024-11-12T09:49:41+00:00"
+            "time": "2024-11-22T12:46:31+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -5658,24 +5658,28 @@
         },
         {
             "name": "php-tuf/composer-stager",
-            "version": "v2.0.0-rc5",
+            "version": "v2.0.0-rc6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-tuf/composer-stager.git",
-                "reference": "9c5aef2ab98db381c30fe4837e9007e1ac2b89e6"
+                "reference": "5ab70d1529d6e7d64598a7c473d5044dce4de87e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-tuf/composer-stager/zipball/9c5aef2ab98db381c30fe4837e9007e1ac2b89e6",
-                "reference": "9c5aef2ab98db381c30fe4837e9007e1ac2b89e6",
+                "url": "https://api.github.com/repos/php-tuf/composer-stager/zipball/5ab70d1529d6e7d64598a7c473d5044dce4de87e",
+                "reference": "5ab70d1529d6e7d64598a7c473d5044dce4de87e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=8.1.0",
                 "symfony/filesystem": "^6.2 || ^7.0",
-                "symfony/process": "^6.2 || ^7.0",
+                "symfony/process": "^6.4.14 || ^7.1.7",
                 "symfony/translation-contracts": "^3.1"
+            },
+            "conflict": {
+                "symfony/process": ">=6 <6.4.14 || >=7 <7.1.7",
+                "symfony/symfony": ">=6 <6.4.14 || >=7 <7.1.7"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -5731,7 +5735,7 @@
                 "issues": "https://github.com/php-tuf/composer-stager/issues",
                 "source": "https://github.com/php-tuf/composer-stager"
             },
-            "time": "2024-07-17T18:52:20+00:00"
+            "time": "2024-11-19T18:37:52+00:00"
         },
         {
             "name": "phpowermove/docblock",
