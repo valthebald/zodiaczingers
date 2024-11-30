@@ -1,7 +1,17 @@
 services:
+  cache_context.today:
+    class: Drupal\zz_card\Cache\TodayCacheContext
+    arguments: ['@datetime.time']
+    tags:
+      - { name: cache.context }
   zz_card.generator:
-    class: '\Drupal\zz_card\HoroscopeGenerator'
+    class: Drupal\zz_card\HoroscopeGenerator
     arguments:
       - '@ai.provider'
       - '@config.factory'
       - '@twig'
+  zz.response_subscriber:
+    class: Drupal\zz_card\EventSubscriber\ResponseSubscriber
+    autowire: true
+    tags:
+      - { name: event_subscriber }

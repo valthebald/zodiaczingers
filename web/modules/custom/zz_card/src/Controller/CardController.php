@@ -176,6 +176,7 @@ class CardController extends ControllerBase {
     ];
     if ($dateGuess) {
       $build['#cache']['tags'][] = 'zz_card_list';
+      $build['#cache']['contexts'][] = 'today';
     }
     $build['#slots']['content'] = [
       '#type' => 'processed_text',
@@ -204,10 +205,8 @@ class CardController extends ControllerBase {
     $currentSign = Sign::fromDate($displayedDate);
 
     $build = [
-      // By having zz_card_list as a cache tag, we ensure that the page will
-      // be rebuilt when the card is in database, so that we can save one AJAX
-      // call.
       '#cache' => [
+        'max-age' => Cache::PERMANENT,
         'tags' => [],
       ],
       '#theme' => 'item_list',
@@ -234,8 +233,14 @@ class CardController extends ControllerBase {
       }
       $build['#items'][] = $link;
     }
+    // By having zz_card_list as a cache tag, we ensure that the page will
+    // be rebuilt when the card is in database, so that we can save one AJAX
+    // call.
+    // Cache context "today" ensures cached object will invalidate when
+    // tomorrow comes.
     if ($dateGuess) {
       $build['#cache']['tags'][] = 'zz_card_list';
+      $build['#cache']['contexts'][] = 'today';
     }
     return $build;
   }
