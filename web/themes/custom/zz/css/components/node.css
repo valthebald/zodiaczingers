@@ -4,5 +4,10 @@
  */
 
 .node--unpublished {
+  color: #0a0a0a;
   background-color: #fff4f4;
+}
+
+.wp-block-code {
+  color: white;
 }
