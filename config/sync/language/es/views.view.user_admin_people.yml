@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        status:
+          label: Estado
+          settings:
+            format_custom_true: Activo
+        roles_target_id:
+          label: Roles
+        operations:
+          label: Operaciones
+      filters:
+        status:
+          group_info:
+            label: Estado
+            group_items:
+              1:
+                title: Activo
+        roles_target_id:
+          expose:
+            label: Rol
+  page_1:
+    display_title: Página
+    display_options:
+      menu:
+        title: Listado

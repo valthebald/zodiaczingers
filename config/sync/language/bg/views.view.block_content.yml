@@ -1,0 +1,9 @@
+display:
+  default:
+    display_title: 'По подразбиране'
+    display_options:
+      fields:
+        operations:
+          label: Действия
+  page_1:
+    display_title: Страница

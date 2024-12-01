@@ -1,0 +1,22 @@
+uuid: 79d055cf-f2ac-4b50-9bde-4d2c3e23ae34
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - zz
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: zz_messages
+theme: zz
+region: header
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

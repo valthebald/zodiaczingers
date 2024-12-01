@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: 'По умолчанию'
+    display_options:
+      fields:
+        status:
+          label: Статус
+          settings:
+            format_custom_true: Активно
+        roles_target_id:
+          label: Роли
+        operations:
+          label: Операции
+      filters:
+        status:
+          group_info:
+            label: Статус
+            group_items:
+              1:
+                title: Активно
+        roles_target_id:
+          expose:
+            label: Роль
+  page_1:
+    display_title: Страница
+    display_options:
+      menu:
+        title: Список

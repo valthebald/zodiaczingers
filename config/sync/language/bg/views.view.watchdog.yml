@@ -1,0 +1,15 @@
+display:
+  default:
+    display_title: 'По подразбиране'
+    display_options:
+      fields:
+        type:
+          label: Тип
+        link:
+          label: Действия
+      filters:
+        type:
+          expose:
+            label: Тип
+  page:
+    display_title: Страница

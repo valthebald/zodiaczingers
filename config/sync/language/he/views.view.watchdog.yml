@@ -1,0 +1,15 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      fields:
+        type:
+          label: סוג
+        link:
+          label: 'פעולות אפשריות'
+      filters:
+        type:
+          expose:
+            label: סוג
+  page:
+    display_title: דף

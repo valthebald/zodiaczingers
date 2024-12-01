@@ -1,0 +1,20 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        operations:
+          label: Operaciones
+      filters:
+        langcode:
+          expose:
+            label: Idioma
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: Operaciones
+      filters:
+        langcode:
+          expose:
+            label: Idioma

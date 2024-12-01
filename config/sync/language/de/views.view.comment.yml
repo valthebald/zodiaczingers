@@ -1,0 +1,20 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        operations:
+          label: Aktionen
+      filters:
+        langcode:
+          expose:
+            label: Sprache
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: Aktionen
+      filters:
+        langcode:
+          expose:
+            label: Sprache

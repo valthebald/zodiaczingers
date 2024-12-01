@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        status:
+          label: Status
+          settings:
+            format_custom_true: Aktiv
+        roles_target_id:
+          label: Rollen
+        operations:
+          label: Aktionen
+      filters:
+        status:
+          group_info:
+            label: Status
+            group_items:
+              1:
+                title: Aktiv
+        roles_target_id:
+          expose:
+            label: Rolle
+  page_1:
+    display_title: Seite
+    display_options:
+      menu:
+        title: Liste

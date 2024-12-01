@@ -1,0 +1,21 @@
+display:
+  default:
+    display_title: 'По подразбиране'
+    display_options:
+      fields:
+        filename:
+          label: Име
+        status:
+          label: Статус
+        operations:
+          label: Действия
+      filters:
+        status:
+          expose:
+            label: Статус
+  page_2:
+    display_options:
+      arguments:
+        fid:
+          exception:
+            title: Всички

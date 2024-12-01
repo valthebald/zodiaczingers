@@ -1,0 +1,9 @@
+display:
+  default:
+    display_options:
+      filters:
+        info:
+          expose:
+            label: Заглавие
+  page_1:
+    display_title: Страница

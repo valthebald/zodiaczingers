@@ -1,0 +1,25 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        title:
+          label: Titre
+        status:
+          label: État
+        langcode:
+          label: Langue
+        operations:
+          label: Actions
+      filters:
+        title:
+          expose:
+            label: Titre
+        status:
+          expose:
+            label: État
+        langcode:
+          expose:
+            label: Langue
+  page_1:
+    display_title: Page

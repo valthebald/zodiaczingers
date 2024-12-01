@@ -1,0 +1,9 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      fields:
+        operations:
+          label: 'פעולות אפשריות'
+  page_1:
+    display_title: דף

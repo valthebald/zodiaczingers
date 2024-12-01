@@ -1,0 +1,11 @@
+uuid: 6a624a6f-5f03-4cad-8b3e-ed763b8dc795
+langcode: en
+status: true
+dependencies:
+  module:
+    - zz_card
+id: zz_card.token
+label: Token
+description: null
+targetEntityType: zz_card
+cache: true

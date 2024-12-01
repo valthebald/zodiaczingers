@@ -1,0 +1,18 @@
+uuid: e3a75042-7769-4e51-b8d5-8c55b28b9e8e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Blog post'
+type: blog
+description: 'Gutenberg-enabled blog post'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

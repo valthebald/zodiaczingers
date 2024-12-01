@@ -1,0 +1,24 @@
+display:
+  default:
+    display_title: 'По умолчанию'
+    display_options:
+      fields:
+        filename:
+          label: Название
+        status:
+          label: Статус
+        operations:
+          label: Операции
+      filters:
+        status:
+          expose:
+            label: Статус
+  page_2:
+    display_options:
+      fields:
+        type:
+          label: 'Тип сущности'
+      arguments:
+        fid:
+          exception:
+            title: Все

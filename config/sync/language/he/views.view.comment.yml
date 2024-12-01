@@ -1,0 +1,20 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      fields:
+        operations:
+          label: 'פעולות אפשריות'
+      filters:
+        langcode:
+          expose:
+            label: שפה
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: 'פעולות אפשריות'
+      filters:
+        langcode:
+          expose:
+            label: שפה

@@ -1,0 +1,10 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      arguments:
+        tid:
+          exception:
+            title: הכל
+  page_1:
+    display_title: דף

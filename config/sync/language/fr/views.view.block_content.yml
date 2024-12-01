@@ -1,0 +1,9 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        operations:
+          label: Actions
+  page_1:
+    display_title: Page

@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: en
+uuid: c7e42c44-325f-4393-abaa-f97f6b4b2670
+name: 'Zodiac Zingers'
+mail: valery+zz@wisetrout.com
+slogan: 'Discover your stars in style'
+page:
+  403: ''
+  404: ''
+  front: /card
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: null

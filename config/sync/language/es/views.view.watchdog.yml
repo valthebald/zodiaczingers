@@ -1,0 +1,15 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        type:
+          label: Tipo
+        link:
+          label: Operaciones
+      filters:
+        type:
+          expose:
+            label: Tipo
+  page:
+    display_title: Página

@@ -1,0 +1,12 @@
+consentNotice:
+  learnMore: Personnaliser
+ok: Accepter
+save: Enregistrer
+decline: Refuser
+close: Fermer
+acceptAll: 'Tout accepter'
+service:
+  purpose: Objectif
+contextualConsent:
+  acceptAlways: Toujours
+  acceptOnce: Oui

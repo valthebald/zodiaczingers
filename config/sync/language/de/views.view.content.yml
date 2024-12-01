@@ -1,0 +1,25 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        title:
+          label: Titel
+        status:
+          label: Status
+        langcode:
+          label: Sprache
+        operations:
+          label: Aktionen
+      filters:
+        title:
+          expose:
+            label: Titel
+        status:
+          expose:
+            label: Status
+        langcode:
+          expose:
+            label: Sprache
+  page_1:
+    display_title: Seite

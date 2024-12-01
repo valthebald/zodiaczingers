@@ -1,0 +1,10 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      arguments:
+        tid:
+          exception:
+            title: Todo(s)
+  page_1:
+    display_title: Página

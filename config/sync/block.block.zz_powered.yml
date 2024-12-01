@@ -1,0 +1,22 @@
+uuid: f69d4f5d-5676-48ad-803d-b0b67c0b095b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zz
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: zz_powered
+theme: zz
+region: footer
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

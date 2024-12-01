@@ -1,0 +1,20 @@
+display:
+  default:
+    display_title: 'По подразбиране'
+    display_options:
+      fields:
+        operations:
+          label: Действия
+      filters:
+        langcode:
+          expose:
+            label: Език
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: Действия
+      filters:
+        langcode:
+          expose:
+            label: Език

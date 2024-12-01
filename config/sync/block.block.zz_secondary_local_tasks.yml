@@ -1,0 +1,22 @@
+uuid: a772047d-ea92-492b-9ccf-fed83086e365
+langcode: en
+status: false
+dependencies:
+  theme:
+    - zz
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: zz_secondary_local_tasks
+theme: zz
+region: header
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

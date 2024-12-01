@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        status:
+          label: État
+          settings:
+            format_custom_true: Actif
+        roles_target_id:
+          label: Rôles
+        operations:
+          label: Actions
+      filters:
+        status:
+          group_info:
+            label: État
+            group_items:
+              1:
+                title: Actif
+        roles_target_id:
+          expose:
+            label: Rôle
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Lister

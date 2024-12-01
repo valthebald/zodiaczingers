@@ -1,0 +1,21 @@
+uuid: a3374013-ebf4-499c-bb40-4efd8e1955c4
+langcode: en
+status: true
+dependencies: {  }
+id: live
+label: Live
+description: 'Stores settings specific to the live environment.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/live
+module:
+  cloudflare: 0
+  cloudflarepurger: 0
+  purge: 0
+  purge_processor_cron: 0
+  purge_ui: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }

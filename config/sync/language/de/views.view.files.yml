@@ -1,0 +1,24 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        filename:
+          label: Name
+        status:
+          label: Status
+        operations:
+          label: Aktionen
+      filters:
+        status:
+          expose:
+            label: Status
+  page_2:
+    display_options:
+      fields:
+        type:
+          label: Entitätstyp
+      arguments:
+        fid:
+          exception:
+            title: Alle

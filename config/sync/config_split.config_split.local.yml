@@ -1,0 +1,19 @@
+uuid: b5f08a71-549c-4d40-9988-ea826979056b
+langcode: en
+status: false
+dependencies: {  }
+id: local
+label: Local
+description: 'Stores settings specific to the local environment.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/local
+module:
+  stage_file_proxy: 0
+theme: {  }
+complete_list: {  }
+partial_list:
+  - matomo.settings
+  - system.performance

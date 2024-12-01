@@ -1,0 +1,2 @@
+label: Sitemap-Index
+description: 'Der Sitemap-Index, der alle anderen Sitemaps auflistet - nützlich, wenn es mindestens zwei andere Sitemaps gibt. In den meisten Fällen sollte diese Sitemap die letzte in der Generierungswarteschlange sein und als Standardsitemap festgelegt werden.'

@@ -1,0 +1,16 @@
+uuid: eaac74f4-ddd4-45d9-a511-fd0b0472db72
+langcode: en
+status: false
+dependencies: {  }
+id: staging
+label: Staging
+description: 'Stores settings specific to the staging environment.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/staging
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

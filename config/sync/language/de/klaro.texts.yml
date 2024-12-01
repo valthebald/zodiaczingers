@@ -1,0 +1,22 @@
+consentModal:
+  privacyPolicy:
+    name: Datenschutzhinweise
+    text: |
+      Für weitere Informationen bitte unsere {privacyPolicy} lesen.
+consentNotice:
+  changeDescription: 'Es gab Änderungen seit dem letzten Besuch und die Konsens-Einstellungen müssen überprüft werden.'
+  learnMore: Anpassen
+ok: Akzeptieren
+save: Speichern
+decline: Ablehnen
+close: Schließen
+acceptAll: 'Alle akzeptieren'
+acceptSelected: 'Ausgewähltes akzeptieren'
+service:
+  required:
+    title: '( immer erforderlich)'
+  purposes: Zweck
+  purpose: Zweck
+contextualConsent:
+  acceptAlways: Immer
+  acceptOnce: Ja

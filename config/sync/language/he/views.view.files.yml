@@ -1,0 +1,24 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      fields:
+        filename:
+          label: שם
+        status:
+          label: מצב
+        operations:
+          label: 'פעולות אפשריות'
+      filters:
+        status:
+          expose:
+            label: מצב
+  page_2:
+    display_options:
+      fields:
+        type:
+          label: 'סוג ישות'
+      arguments:
+        fid:
+          exception:
+            title: הכל

@@ -1,0 +1,17 @@
+uuid: 1a60ef33-d6f7-48f3-a4fb-ad8eb32950de
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - zz_card
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: zz_card.zz_card
+target_entity_type_id: zz_card
+target_bundle: zz_card
+default_langcode: site_default
+language_alterable: true

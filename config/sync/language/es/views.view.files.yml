@@ -1,0 +1,24 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        filename:
+          label: Nombre
+        status:
+          label: Estado
+        operations:
+          label: Operaciones
+      filters:
+        status:
+          expose:
+            label: Estado
+  page_2:
+    display_options:
+      fields:
+        type:
+          label: 'Tipo de entidad'
+      arguments:
+        fid:
+          exception:
+            title: Todo(s)

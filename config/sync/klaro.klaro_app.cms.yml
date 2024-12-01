@@ -1,0 +1,27 @@
+uuid: 588fa898-adbb-41f7-bd55-b2162ca68ad5
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: G69bzC2UtPzHnWn071soAmE3OY9w9-W7apsiwv8c-CA
+id: cms
+label: CMS
+description: 'Store data (e.g. cookies) in browser for using this website.'
+default: true
+purposes:
+  - cms
+cookies:
+  -
+    regex: '^[SESS|SSESS]'
+    path: ''
+    domain: ''
+required: true
+opt_out: false
+only_once: false
+info_url: 'https://www.drupal.org'
+privacy_policy_url: ''
+javascripts: {  }
+callback_code: ''
+wrapper_identifier: {  }
+attachments: {  }
+weight: 4

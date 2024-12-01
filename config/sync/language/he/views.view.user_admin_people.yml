@@ -1,0 +1,28 @@
+display:
+  default:
+    display_title: 'ברירת מחדל'
+    display_options:
+      fields:
+        status:
+          label: מצב
+          settings:
+            format_custom_true: פעיל
+        roles_target_id:
+          label: תפקידים
+        operations:
+          label: 'פעולות אפשריות'
+      filters:
+        status:
+          group_info:
+            label: מצב
+            group_items:
+              1:
+                title: פעיל
+        roles_target_id:
+          expose:
+            label: תפקיד
+  page_1:
+    display_title: דף
+    display_options:
+      menu:
+        title: רשימה

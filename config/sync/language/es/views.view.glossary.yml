@@ -1,0 +1,9 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        title:
+          label: Título
+  page_1:
+    display_title: Página

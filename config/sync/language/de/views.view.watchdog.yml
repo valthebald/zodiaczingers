@@ -1,0 +1,15 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        type:
+          label: Typ
+        link:
+          label: Aktionen
+      filters:
+        type:
+          expose:
+            label: Typ
+  page:
+    display_title: Seite

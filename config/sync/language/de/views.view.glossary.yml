@@ -1,0 +1,9 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      fields:
+        title:
+          label: Titel
+  page_1:
+    display_title: Seite

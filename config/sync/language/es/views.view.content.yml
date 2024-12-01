@@ -1,0 +1,25 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      fields:
+        title:
+          label: Título
+        status:
+          label: Estado
+        langcode:
+          label: Idioma
+        operations:
+          label: Operaciones
+      filters:
+        title:
+          expose:
+            label: Título
+        status:
+          expose:
+            label: Estado
+        langcode:
+          expose:
+            label: Idioma
+  page_1:
+    display_title: Página

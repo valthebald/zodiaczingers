@@ -1,0 +1,20 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        operations:
+          label: Actions
+      filters:
+        langcode:
+          expose:
+            label: Langue
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: Actions
+      filters:
+        langcode:
+          expose:
+            label: Langue
