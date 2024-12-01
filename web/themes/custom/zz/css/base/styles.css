@@ -24,10 +24,20 @@ h1.card-header {
   background-color: #1b263b;
   border-radius: 15px;
   padding: 20px;
-  width: 300px;
+  width: auto;
+  max-width: 800px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
+  /** Node style **/
+  &.node {
+    width: auto;
+    max-width: 800px;
+    text-align: justify;
+    a {
+      color: white;
+    }
+  }
 }
 
 .card a {
@@ -112,6 +122,10 @@ footer {
 }
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .box {
+    width: auto;
+    max-width: 90%;
+  }
   .menu {
     display: none;
   }

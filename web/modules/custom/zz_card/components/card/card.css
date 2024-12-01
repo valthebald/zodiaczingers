@@ -3,7 +3,7 @@
   background-color: #1b263b;
   border-radius: 15px;
   padding: 20px;
-  width: 300px;
+  max-width: 800px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
@@ -21,4 +21,10 @@
   font-size: 16px;
   color: #d1d5db;
   text-align: justify;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .card {
+    max-width: 90%;
+  }
 }
