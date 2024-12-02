@@ -1,0 +1,22 @@
+uuid: 8dcd472d-e89e-4c2f-a8d2-f5ba617a993a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - taxonomy
+_core:
+  default_config_hash: v25CI_ResKc-IP8b8-2dAIyMEXgd3CDQhjw-QLoVUX0
+id: block_content.field_pattern_category
+field_name: field_pattern_category
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

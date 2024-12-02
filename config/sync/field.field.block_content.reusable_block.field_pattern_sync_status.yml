@@ -1,0 +1,23 @@
+uuid: fbcc55c7-1ab3-432a-b58b-2c0e90bea37f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.reusable_block
+    - field.storage.block_content.field_pattern_sync_status
+  module:
+    - options
+_core:
+  default_config_hash: XdoaC7cVee4wS-sUFJCpXlVkjK21-9GyMglzXnnFAtA
+id: block_content.reusable_block.field_pattern_sync_status
+field_name: field_pattern_sync_status
+entity_type: block_content
+bundle: reusable_block
+label: 'Sync Status'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

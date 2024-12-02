@@ -1,0 +1,29 @@
+uuid: ff91a49e-5924-417a-9c30-a847657bfdb3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+_core:
+  default_config_hash: hWPUi16SfyGNTDoBhpybOILaQMPDcvPvCl0A2qOLUG4
+id: block_content.field_pattern_sync_status
+field_name: field_pattern_sync_status
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: synced
+      label: Synced
+    -
+      value: unsynced
+      label: Unsynced
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

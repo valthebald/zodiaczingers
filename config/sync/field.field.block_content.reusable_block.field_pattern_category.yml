@@ -1,0 +1,31 @@
+uuid: 353f8fa3-9100-4edc-90b3-213b274ef64b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.reusable_block
+    - field.storage.block_content.field_pattern_category
+    - taxonomy.vocabulary.pattern_categories
+_core:
+  default_config_hash: VXXtw0UNI3rTobtEGOJt2H9TqzAM0T2EQnK7ruZPFpU
+id: block_content.reusable_block.field_pattern_category
+field_name: field_pattern_category
+entity_type: block_content
+bundle: reusable_block
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      pattern_categories: pattern_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
