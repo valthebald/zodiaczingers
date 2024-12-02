@@ -29,7 +29,7 @@
         "drupal/core-recommended": "^11.0",
         "drupal/devel": "^5.3",
         "drupal/experience_builder": "^0.1.0@alpha",
-        "drupal/gutenberg": "^2.14",
+        "drupal/gutenberg": "^3.0",
         "drupal/klaro": "^3.0@RC",
         "drupal/matomo": "^2.0@alpha",
         "drupal/metatag": "^2.0",
