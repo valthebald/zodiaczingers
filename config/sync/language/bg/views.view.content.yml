@@ -1,7 +1,9 @@
+label: Съдържание
 display:
   default:
     display_title: 'По подразбиране'
     display_options:
+      title: Съдържание
       fields:
         title:
           label: Заглавие
@@ -11,6 +13,9 @@ display:
           label: Език
         operations:
           label: Действия
+      exposed_form:
+        options:
+          reset_button_label: Рестартирай
       filters:
         title:
           expose:
@@ -23,3 +28,8 @@ display:
             label: Език
   page_1:
     display_title: Страница
+    display_options:
+      menu:
+        title: Съдържание
+      tab_options:
+        title: Съдържание

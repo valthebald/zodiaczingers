@@ -2,6 +2,9 @@ display:
   default:
     display_title: 'Par défaut'
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Réinitialiser
       arguments:
         tid:
           exception:

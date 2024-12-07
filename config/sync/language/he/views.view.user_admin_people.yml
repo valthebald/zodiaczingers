@@ -3,6 +3,8 @@ display:
     display_title: 'ברירת מחדל'
     display_options:
       fields:
+        name:
+          label: 'שם משתמש'
         status:
           label: מצב
           settings:
@@ -11,6 +13,9 @@ display:
           label: תפקידים
         operations:
           label: 'פעולות אפשריות'
+      exposed_form:
+        options:
+          reset_button_label: איתחול
       filters:
         status:
           group_info:

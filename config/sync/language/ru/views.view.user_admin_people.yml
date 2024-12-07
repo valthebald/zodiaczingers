@@ -3,6 +3,8 @@ display:
     display_title: 'По умолчанию'
     display_options:
       fields:
+        name:
+          label: 'Имя пользователя'
         status:
           label: Статус
           settings:
@@ -11,6 +13,9 @@ display:
           label: Роли
         operations:
           label: Операции
+      exposed_form:
+        options:
+          reset_button_label: Сбросить
       filters:
         status:
           group_info:

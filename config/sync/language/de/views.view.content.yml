@@ -1,7 +1,9 @@
+label: Inhalt
 display:
   default:
     display_title: Standard
     display_options:
+      title: Inhalt
       fields:
         title:
           label: Titel
@@ -11,6 +13,9 @@ display:
           label: Sprache
         operations:
           label: Aktionen
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
       filters:
         title:
           expose:
@@ -23,3 +28,8 @@ display:
             label: Sprache
   page_1:
     display_title: Seite
+    display_options:
+      menu:
+        title: Inhalt
+      tab_options:
+        title: Inhalt

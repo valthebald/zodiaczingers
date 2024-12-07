@@ -5,8 +5,13 @@ display:
       fields:
         type:
           label: Тип
+        message:
+          label: Сообщение
         link:
           label: Операции
+      exposed_form:
+        options:
+          reset_button_label: Сбросить
       filters:
         type:
           expose:

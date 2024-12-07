@@ -9,6 +9,9 @@ display:
           label: Статус
         operations:
           label: Действия
+      exposed_form:
+        options:
+          reset_button_label: Рестартирай
       filters:
         status:
           expose:

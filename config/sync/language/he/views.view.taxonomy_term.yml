@@ -2,6 +2,9 @@ display:
   default:
     display_title: 'ברירת מחדל'
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: איתחול
       arguments:
         tid:
           exception:

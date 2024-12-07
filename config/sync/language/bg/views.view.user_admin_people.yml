@@ -3,6 +3,8 @@ display:
     display_title: 'По подразбиране'
     display_options:
       fields:
+        name:
+          label: 'Потребителско име'
         status:
           label: Статус
           settings:
@@ -11,6 +13,9 @@ display:
           label: Роли
         operations:
           label: Действия
+      exposed_form:
+        options:
+          reset_button_label: Рестартирай
       filters:
         status:
           group_info:

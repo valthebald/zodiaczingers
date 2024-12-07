@@ -5,5 +5,8 @@ display:
       fields:
         operations:
           label: Aktionen
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
   page_1:
     display_title: Seite

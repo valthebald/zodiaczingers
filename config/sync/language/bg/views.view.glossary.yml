@@ -5,5 +5,8 @@ display:
       fields:
         title:
           label: Заглавие
+      exposed_form:
+        options:
+          reset_button_label: Рестартирай
   page_1:
     display_title: Страница

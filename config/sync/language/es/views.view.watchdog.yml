@@ -5,8 +5,13 @@ display:
       fields:
         type:
           label: Tipo
+        message:
+          label: Mensaje
         link:
           label: Operaciones
+      exposed_form:
+        options:
+          reset_button_label: Restablecer
       filters:
         type:
           expose:

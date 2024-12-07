@@ -5,8 +5,13 @@ display:
       fields:
         type:
           label: סוג
+        message:
+          label: הודעה
         link:
           label: 'פעולות אפשריות'
+      exposed_form:
+        options:
+          reset_button_label: איתחול
       filters:
         type:
           expose:

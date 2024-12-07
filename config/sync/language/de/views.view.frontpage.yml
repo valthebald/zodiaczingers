@@ -1,5 +1,9 @@
 display:
   default:
     display_title: Standard
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
   page_1:
     display_title: Seite

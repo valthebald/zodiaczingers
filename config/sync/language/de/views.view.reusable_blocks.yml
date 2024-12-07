@@ -1,9 +1,15 @@
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
       filters:
         info:
           expose:
             label: Titel
+        field_pattern_category_target_id:
+          expose:
+            label: Kategorie
   page_1:
     display_title: Seite

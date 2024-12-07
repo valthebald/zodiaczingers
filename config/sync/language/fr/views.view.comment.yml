@@ -3,18 +3,31 @@ display:
     display_title: 'Par défaut'
     display_options:
       fields:
+        subject:
+          label: Objet
         operations:
           label: Actions
+      exposed_form:
+        options:
+          reset_button_label: Réinitialiser
       filters:
+        subject:
+          expose:
+            label: Objet
         langcode:
           expose:
             label: Langue
   page_unapproved:
     display_options:
       fields:
+        subject:
+          label: Objet
         operations:
           label: Actions
       filters:
+        subject:
+          expose:
+            label: Objet
         langcode:
           expose:
             label: Langue

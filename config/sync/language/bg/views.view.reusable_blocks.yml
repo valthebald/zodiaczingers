@@ -1,9 +1,15 @@
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: Рестартирай
       filters:
         info:
           expose:
             label: Заглавие
+        field_pattern_category_target_id:
+          expose:
+            label: Категория
   page_1:
     display_title: Страница

@@ -5,5 +5,8 @@ display:
       fields:
         operations:
           label: 'פעולות אפשריות'
+      exposed_form:
+        options:
+          reset_button_label: איתחול
   page_1:
     display_title: דף

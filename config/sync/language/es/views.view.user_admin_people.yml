@@ -3,6 +3,8 @@ display:
     display_title: 'Por defecto'
     display_options:
       fields:
+        name:
+          label: 'Nombre de usuario'
         status:
           label: Estado
           settings:
@@ -11,6 +13,9 @@ display:
           label: Roles
         operations:
           label: Operaciones
+      exposed_form:
+        options:
+          reset_button_label: Restablecer
       filters:
         status:
           group_info:

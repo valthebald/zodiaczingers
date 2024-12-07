@@ -9,6 +9,9 @@ display:
           label: מצב
         operations:
           label: 'פעולות אפשריות'
+      exposed_form:
+        options:
+          reset_button_label: איתחול
       filters:
         status:
           expose:
@@ -16,6 +19,8 @@ display:
   page_2:
     display_options:
       fields:
+        entity_label:
+          label: יישות
         type:
           label: 'סוג ישות'
       arguments:

@@ -9,6 +9,9 @@ display:
           label: Estado
         operations:
           label: Operaciones
+      exposed_form:
+        options:
+          reset_button_label: Restablecer
       filters:
         status:
           expose:
@@ -16,6 +19,8 @@ display:
   page_2:
     display_options:
       fields:
+        entity_label:
+          label: Entidad
         type:
           label: 'Tipo de entidad'
       arguments:

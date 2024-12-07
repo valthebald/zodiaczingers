@@ -1,7 +1,9 @@
+label: Содержимое
 display:
   default:
     display_title: 'По умолчанию'
     display_options:
+      title: Содержимое
       fields:
         title:
           label: Заголовок
@@ -11,6 +13,9 @@ display:
           label: Язык
         operations:
           label: Операции
+      exposed_form:
+        options:
+          reset_button_label: Сбросить
       filters:
         title:
           expose:
@@ -23,3 +28,8 @@ display:
             label: Язык
   page_1:
     display_title: Страница
+    display_options:
+      menu:
+        title: Содержимое
+      tab_options:
+        title: Содержимое

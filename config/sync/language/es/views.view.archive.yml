@@ -1,5 +1,9 @@
 display:
   default:
     display_title: 'Por defecto'
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Restablecer
   page_1:
     display_title: Página

@@ -4,3 +4,4 @@ mode: simple
 ignored_config_entities:
   - cloudflare.settings
   - 'key.key.*'
+  - 'symfony_mailer.mailer_transport.*'

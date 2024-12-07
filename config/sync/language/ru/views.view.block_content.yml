@@ -5,5 +5,8 @@ display:
       fields:
         operations:
           label: Операции
+      exposed_form:
+        options:
+          reset_button_label: Сбросить
   page_1:
     display_title: Страница

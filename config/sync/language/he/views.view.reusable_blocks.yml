@@ -1,9 +1,15 @@
 display:
   default:
     display_options:
+      exposed_form:
+        options:
+          reset_button_label: איתחול
       filters:
         info:
           expose:
             label: כותרת
+        field_pattern_category_target_id:
+          expose:
+            label: קטגוריה
   page_1:
     display_title: דף

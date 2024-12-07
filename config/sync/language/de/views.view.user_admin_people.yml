@@ -3,6 +3,8 @@ display:
     display_title: Standard
     display_options:
       fields:
+        name:
+          label: Benutzername
         status:
           label: Status
           settings:
@@ -11,6 +13,9 @@ display:
           label: Rollen
         operations:
           label: Aktionen
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
       filters:
         status:
           group_info:

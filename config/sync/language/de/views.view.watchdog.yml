@@ -5,8 +5,13 @@ display:
       fields:
         type:
           label: Typ
+        message:
+          label: Benachrichtigung
         link:
           label: Aktionen
+      exposed_form:
+        options:
+          reset_button_label: Zurücksetzen
       filters:
         type:
           expose:

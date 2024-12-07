@@ -3,18 +3,31 @@ display:
     display_title: 'По умолчанию'
     display_options:
       fields:
+        subject:
+          label: Тема
         operations:
           label: Операции
+      exposed_form:
+        options:
+          reset_button_label: Сбросить
       filters:
+        subject:
+          expose:
+            label: Тема
         langcode:
           expose:
             label: Язык
   page_unapproved:
     display_options:
       fields:
+        subject:
+          label: Тема
         operations:
           label: Операции
       filters:
+        subject:
+          expose:
+            label: Тема
         langcode:
           expose:
             label: Язык

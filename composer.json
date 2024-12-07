@@ -40,6 +40,7 @@
         "drupal/robotstxt": "^1.6",
         "drupal/simple_sitemap": "^4.2",
         "drupal/stage_file_proxy": "^3.1",
+        "drupal/symfony_mailer": "^1.5",
         "drush/drush": "^13.3",
         "mglaman/composer-drupal-lenient": "^1.0"
     },

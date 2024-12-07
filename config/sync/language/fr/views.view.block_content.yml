@@ -5,5 +5,8 @@ display:
       fields:
         operations:
           label: Actions
+      exposed_form:
+        options:
+          reset_button_label: Réinitialiser
   page_1:
     display_title: Page
