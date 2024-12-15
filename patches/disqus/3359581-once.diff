@@ -1,0 +1,35 @@
+diff --git a/disqus.libraries.yml b/disqus.libraries.yml
+index d6053dd35c5199e39c9187cd3ce760ac2f004bbc..b87a63a45a72529d0cd8d4758697d6d019607374 100644
+--- a/disqus.libraries.yml
++++ b/disqus.libraries.yml
+@@ -5,7 +5,7 @@ disqus:
+     js/disqus.settings.js: {}
+   dependencies:
+     - core/jquery
+-    - core/jquery.once
++    - core/once
+     - core/drupal
+     - core/drupal.form
+ ga:
+diff --git a/js/disqus.js b/js/disqus.js
+index 551a92e4dca795cf42d1e0e0efa6a50fc6ba23dc..e23d71f478bf86ae52059619c3429af4d3220ddf 100644
+--- a/js/disqus.js
++++ b/js/disqus.js
+@@ -27,7 +27,7 @@ Drupal.behaviors.disqus = {
+     if (settings.disqus || false) {
+ 
+       // Ensure that the Disqus comments are only loaded once.
+-      $('body').once('disqus').each(function () {
++      $(once('disqus', 'body', context)).each(function () {
+ 
+         // Setup the global JavaScript variables for Disqus.
+         disqus_shortname = settings.disqus.domain;
+@@ -80,7 +80,7 @@ Drupal.behaviors.disqus = {
+     // Load the comment numbers JavaScript.
+     if (settings.disqusComments || false) {
+       // Ensure that comment numbers JavaScript is only loaded once.
+-      $('body').once('disqusComments').each(function () {
++      $(once('disqusComments', 'body', context)).each(function () {
+         disqus_shortname = settings.disqusComments;
+         // Make the AJAX call to get the number of comments.
+         jQuery.ajax({
