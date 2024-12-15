@@ -1,0 +1,17 @@
+{
+    "name": "drupal/tg_bot_sdk",
+    "description": "Wrapper around Telegram Bot SDK PHP",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/tg_bot_sdk",
+    "authors": [
+        {
+            "name": "Valery L. Lourie",
+            "homepage": "https://www.drupal.org/u/valthebald",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "irazasyed/telegram-bot-sdk": "^3.0"
+    }
+}

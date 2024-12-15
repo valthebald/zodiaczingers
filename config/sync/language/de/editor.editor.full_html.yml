@@ -1,0 +1,6 @@
+settings:
+  plugins:
+    ckeditor5_codeBlock:
+      languages:
+        -
+          label: 'Plain text'

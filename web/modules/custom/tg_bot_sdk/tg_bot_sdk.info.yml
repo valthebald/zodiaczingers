@@ -1,0 +1,9 @@
+name: 'Telegram Bot SDK'
+type: module
+description: 'Telegram Bot SDK based on https://telegram-bot-sdk.com'
+core_version_requirement: ^11
+package: 'Telegram Bot SDK'
+dependencies:
+  - key:key
+configure: tg_bot_sdk.settings
+interface translation project: tg_bot_sdk

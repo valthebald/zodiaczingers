@@ -1,0 +1,20 @@
+tg_bot_sdk.bot.*:
+  type: config_entity
+  label: 'Telegram bot'
+  mapping:
+    id:
+      type: string
+      label: 'REST resource config ID'
+    plugin_id:
+      type: string
+      label: 'Bot plugin id'
+      constraints:
+        PluginExists:
+          manager: plugin.manager.rest
+          interface: 'Drupal\tg_bot_sdk\Plugin\BotInterface'
+    api_key:
+      type: string
+      label: 'API key'
+    configuration:
+      type: mapping
+      label: 'Bot configuration'

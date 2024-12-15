@@ -1,7 +1,9 @@
+label: People
 display:
   default:
     display_title: 'ברירת מחדל'
     display_options:
+      title: People
       fields:
         name:
           label: 'שם משתמש'
@@ -31,3 +33,5 @@ display:
     display_options:
       menu:
         title: רשימה
+      tab_options:
+        title: People

@@ -1,7 +1,9 @@
+label: People
 display:
   default:
     display_title: 'По подразбиране'
     display_options:
+      title: People
       fields:
         name:
           label: 'Потребителско име'
@@ -31,3 +33,5 @@ display:
     display_options:
       menu:
         title: Списък
+      tab_options:
+        title: People

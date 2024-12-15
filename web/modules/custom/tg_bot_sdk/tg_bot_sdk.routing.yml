@@ -1,0 +1,37 @@
+tg_bot_sdk.settings:
+  path: '/admin/config/services/tg_bot/settings'
+  defaults:
+    _form: '\Drupal\tg_bot_sdk\Form\TgBotSettingsForm'
+    _title: 'Telegram Bot SDK settings'
+  requirements:
+    _permission: 'administer site configuration'
+tg_bot_sdk.update_handler:
+  path: '/tg_bot/on_update'
+  defaults:
+    _controller: '\Drupal\tg_bot_sdk\Controller\UpdatesController::getUpdates'
+  requirements:
+    _permission: 'access content'
+
+entity.telegram_bot.add_form:
+  path: '/admin/config/services/tg_bot/add'
+  defaults:
+    _entity_form: 'telegram_bot.add'
+    _title: 'Add a new bot'
+  requirements:
+    _permission: 'administer telegram bots'
+
+entity.telegram_bot.edit_form:
+  path: '/admin/config/services/tg_bot/edit/{telegram_bot}'
+  defaults:
+    _entity_form: 'telegram_bot.edit'
+    _title: 'Edit'
+  requirements:
+    _entity_access: 'telegram_bot.update'
+
+entity.telegram_bot.collection:
+  path: '/admin/config/services/tg_bot/list'
+  defaults:
+    _entity_list: 'telegram_bot'
+    _title: 'Telegram bots'
+  requirements:
+    _permission: 'administer telegram bots'

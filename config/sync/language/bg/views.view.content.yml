@@ -1,9 +1,9 @@
-label: Съдържание
+label: Content
 display:
   default:
     display_title: 'По подразбиране'
     display_options:
-      title: Съдържание
+      title: Content
       fields:
         title:
           label: Заглавие
@@ -30,6 +30,6 @@ display:
     display_title: Страница
     display_options:
       menu:
-        title: Съдържание
+        title: Content
       tab_options:
-        title: Съдържание
+        title: Content

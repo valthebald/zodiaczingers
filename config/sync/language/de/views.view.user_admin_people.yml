@@ -1,7 +1,9 @@
+label: People
 display:
   default:
     display_title: Standard
     display_options:
+      title: People
       fields:
         name:
           label: Benutzername
@@ -31,3 +33,5 @@ display:
     display_options:
       menu:
         title: Liste
+      tab_options:
+        title: People

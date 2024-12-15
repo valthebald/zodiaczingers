@@ -1,0 +1,9 @@
+services:
+  cache_context.today:
+    class: Drupal\zz_card\Cache\TodayCacheContext
+    arguments: ['@datetime.time']
+    tags:
+      - { name: cache.context }
+  plugin.manager.tg_bot:
+    class: Drupal\tg_bot_sdk\BotPluginManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']

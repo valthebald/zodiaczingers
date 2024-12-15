@@ -1,7 +1,9 @@
+label: People
 display:
   default:
     display_title: 'Par défaut'
     display_options:
+      title: People
       fields:
         name:
           label: "Nom d'utilisateur"
@@ -31,3 +33,5 @@ display:
     display_options:
       menu:
         title: Lister
+      tab_options:
+        title: People

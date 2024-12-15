@@ -1,9 +1,9 @@
-label: Contenido
+label: Content
 display:
   default:
     display_title: 'Por defecto'
     display_options:
-      title: Contenido
+      title: Content
       fields:
         title:
           label: Título
@@ -30,6 +30,6 @@ display:
     display_title: Página
     display_options:
       menu:
-        title: Contenido
+        title: Content
       tab_options:
-        title: Contenido
+        title: Content

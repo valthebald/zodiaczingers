@@ -1,9 +1,9 @@
-label: תוכן
+label: Content
 display:
   default:
     display_title: 'ברירת מחדל'
     display_options:
-      title: תוכן
+      title: Content
       fields:
         title:
           label: כותרת
@@ -30,6 +30,6 @@ display:
     display_title: דף
     display_options:
       menu:
-        title: תוכן
+        title: Content
       tab_options:
-        title: תוכן
+        title: Content

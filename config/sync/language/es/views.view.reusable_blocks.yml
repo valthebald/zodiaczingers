@@ -10,6 +10,6 @@ display:
             label: Título
         field_pattern_category_target_id:
           expose:
-            label: Categoría
+            label: Category
   page_1:
     display_title: Página
