@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.blog.body
+    - field.field.node.blog.field_comments
     - field.field.node.blog.field_tags
     - node.type.blog
   module:
+    - disqus
     - path
     - text
 id: node.blog.default
@@ -27,6 +29,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_comments:
+    type: disqus_comment
+    weight: 132
     region: content
     settings: {  }
     third_party_settings: {  }

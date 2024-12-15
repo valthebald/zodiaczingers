@@ -2,6 +2,10 @@
   "patches": {
     "drupal/ai": {
       "3478721 - Unify translate operations": "patches/ai/3478721-unify-translations.diff"
+    },
+    "drupal/disqus": {
+      "3296968 - Drupal 10/11 compatibility": "patches/disqus/3296968.diff",
+      "PHP 8.3 fixes": "patches/disqus/php83.diff"
     }
   }
 }

@@ -1,0 +1,69 @@
+diff --git a/disqus.info.yml b/disqus.info.yml
+index 26049f1ffc83dc2ed8bd9556d287bc342315955d..a247c1db56b01ece16b95058675d3628c8b75f43 100644
+--- a/disqus.info.yml
++++ b/disqus.info.yml
+@@ -1,7 +1,7 @@
+ name: Disqus
+ type: module
+ description: 'Integrated the Disqus web service to enhance comments in Drupal.'
+-core_version_requirement: ^9 || ^10
++core_version_requirement: ^9 || ^10 || ^11
+ configure: disqus.settings
+ dependencies:
+   - drupal:file
+diff --git a/src/Form/DisqusSettingsForm.php b/src/Form/DisqusSettingsForm.php
+index aea68b476ac0b282c27b1733a9ad5257cf319dd5..9ba72429f6bbff8ea2af5cf328958d3b60e06e32 100644
+--- a/src/Form/DisqusSettingsForm.php
++++ b/src/Form/DisqusSettingsForm.php
+@@ -5,6 +5,7 @@ namespace Drupal\disqus\Form;
+ use Drupal\disqus\DisqusCommentManagerInterface;
+ use Drupal\file\FileUsage\FileUsageInterface;
+ use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Config\TypedConfigManagerInterface;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Extension\ModuleHandlerInterface;
+ use Drupal\Core\Form\ConfigFormBase;
+@@ -42,6 +43,8 @@ class DisqusSettingsForm extends ConfigFormBase {
+    *
+    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+    *   The factory for configuration objects.
++   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
++   *   The typed config manager.
+    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+    *   The module handler.
+    * @param \Drupal\file\FileUsage\FileUsageInterface $file_usage
+@@ -49,8 +52,8 @@ class DisqusSettingsForm extends ConfigFormBase {
+    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+    *   The entity type manager.
+    */
+-  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $module_handler, FileUsageInterface $file_usage, EntityTypeManagerInterface $entity_type_manager) {
+-    parent::__construct($config_factory);
++  public function __construct(ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typedConfigManager, ModuleHandlerInterface $module_handler, FileUsageInterface $file_usage, EntityTypeManagerInterface $entity_type_manager) {
++    parent::__construct($config_factory, $typedConfigManager);
+     $this->moduleHandler = $module_handler;
+     $this->fileUsage = $file_usage;
+     $this->entityTypeManager = $entity_type_manager;
+@@ -62,6 +65,7 @@ class DisqusSettingsForm extends ConfigFormBase {
+   public static function create(ContainerInterface $container) {
+     return new static(
+       $container->get('config.factory'),
++      $container->get('config.typed'),
+       $container->get('module_handler'),
+       $container->get('file.usage'),
+       $container->get('entity_type.manager')
+diff --git a/src/Plugin/migrate/source/DisqusComment.php b/src/Plugin/migrate/source/DisqusComment.php
+index afe0c7bbcf5e6073c817de20f3374cfaacd1cbcc..48b59ff5cc1bda0d2ab1f3c8ffd4c2035bb3e012 100644
+--- a/src/Plugin/migrate/source/DisqusComment.php
++++ b/src/Plugin/migrate/source/DisqusComment.php
+@@ -125,7 +125,10 @@ class DisqusComment extends SourcePluginBase implements ContainerFactoryPluginIn
+   public function prepareRow(Row $row) {
+     $row->setSourceProperty('uid', 0);
+     $email = $row->getSourceProperty('email');
+-    $user = $this->entityTypeManager->getStorage('user')->getQuery()->condition('mail', $email)->execute();
++    $user = $this->entityTypeManager->getStorage('user')->getQuery()
++      ->condition('mail', $email)
++      ->accessCheck(FALSE)
++      ->execute();
+     if ($user) {
+       $row->setSourceProperty('uid', key($user));
+     }

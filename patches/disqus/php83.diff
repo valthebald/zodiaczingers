@@ -1,0 +1,22 @@
+diff --git a/src/Element/Disqus.php b/src/Element/Disqus.php
+index e9d6193e94b96024f4df03af172da2cd029cda16..a00be43f3ec105a4f83b59bf221be91c2af04403 100644
+--- a/src/Element/Disqus.php
++++ b/src/Element/Disqus.php
+@@ -22,7 +22,7 @@ class Disqus extends RenderElement {
+       '#callbacks' => [],
+       '#attributes' => ['id' => 'disqus_thread'],
+       '#pre_render' => [
+-        get_class() . '::generatePlaceholder',
++        [static::class, 'generatePlaceholder'],
+       ],
+     ];
+   }
+@@ -40,7 +40,7 @@ class Disqus extends RenderElement {
+     if (\Drupal::currentUser()->hasPermission('view disqus comments')) {
+       $element[] = [
+         '#lazy_builder' => [
+-          get_class() . '::displayDisqusComments',
++          static::class . '::displayDisqusComments',
+           [
+             $element['#title'],
+             $element['#url'],

@@ -28,6 +28,7 @@
         "drupal/core-project-message": "^11.0",
         "drupal/core-recommended": "^11.0",
         "drupal/devel": "^5.3",
+        "drupal/disqus": "^2",
         "drupal/experience_builder": "^0.1.0@alpha",
         "drupal/gutenberg": "^3.0",
         "drupal/klaro": "^3.0@RC",

@@ -1,0 +1,19 @@
+_core:
+  default_config_hash: Llro1YlSl1oOAdzusK0r0JeD5CzYhWuW5KTPM3UHmT8
+disqus_domain: zodiac-zingers
+behavior:
+  disqus_localization: false
+  disqus_inherit_login: false
+  disqus_track_newcomment_ga: false
+  disqus_notify_newcomment: false
+advanced:
+  disqus_useraccesstoken: ''
+  disqus_publickey: ''
+  disqus_secretkey: ''
+  api:
+    disqus_api_update: false
+    disqus_api_delete: '0'
+  sso:
+    disqus_sso: false
+    disqus_use_site_logo: false
+    disqus_logo: ''
