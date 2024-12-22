@@ -1,0 +1,166 @@
+diff --git a/src/Controller/SearchController.php b/src/Controller/SearchController.php
+index 8eb0f17..d8d2f37 100644
+--- a/src/Controller/SearchController.php
++++ b/src/Controller/SearchController.php
+@@ -3,6 +3,15 @@
+ namespace Drupal\gutenberg\Controller;
+ 
+ use Drupal\Core\Controller\ControllerBase;
++use Drupal\Core\Entity\EntityInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\GeneratedUrl;
++use Drupal\Core\Url;
++use Drupal\linkit\ProfileInterface;
++use Drupal\linkit\SubstitutionManagerInterface;
++use Drupal\linkit\Suggestion\EntitySuggestion;
++use Drupal\linkit\SuggestionManager;
++use Symfony\Component\DependencyInjection\ContainerInterface;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+ use Symfony\Component\HttpFoundation\Request;
+ use Drupal\node\Entity\Node;
+@@ -12,6 +21,35 @@ use Drupal\node\Entity\Node;
+  */
+ class SearchController extends ControllerBase {
+ 
++  protected EntityRepositoryInterface $entityRepository;
++  protected ?SuggestionManager $linkitSuggestionManager = null;
++  protected ?SubstitutionManagerInterface $linkitSubstitutionManager = null;
++
++  /**
++   * @param \Drupal\linkit\SuggestionManager|NULL $linkitSuggestionManager
++   * @param SubstitutionManagerInterface|NULL $linkitSubstitutionManager
++   */
++  public function __construct(
++    EntityRepositoryInterface $entityRepository,
++    SuggestionManager $linkitSuggestionManager = null,
++    SubstitutionManagerInterface $linkitSubstitutionManager = null
++  ) {
++    $this->entityRepository = $entityRepository;
++    $this->linkitSuggestionManager = $linkitSuggestionManager;
++    $this->linkitSubstitutionManager = $linkitSubstitutionManager;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container) {
++    return new static(
++      \Drupal::service('entity.repository'),
++      \Drupal::hasService('linkit.suggestion_manager') ? \Drupal::service('linkit.suggestion_manager') : null,
++      \Drupal::hasService('plugin.manager.linkit.substitution') ? \Drupal::service('plugin.manager.linkit.substitution') : null
++    );
++  }
++
+   /**
+    * Return a list of nodes containing a piece of search text.
+    *
+@@ -26,6 +64,15 @@ class SearchController extends ControllerBase {
+    * @throws \Drupal\Core\Entity\EntityMalformedException
+    */
+   public function search(Request $request) {
++    if ($this->linkitSuggestionManager) {
++      // @todo make the profile configurable.
++      $linkit_profile_id = 'default';
++      $result = self::searchLinkit($request, $linkit_profile_id);
++      if ($result instanceof JsonResponse) {
++        return $result;
++      }
++    }
++
+     $search = (string) $request->query->get('search');
+     $limit = (int) $request->query->get('per_page', 20);
+     $langcode = (string) $request->query->get('langcode');
+@@ -61,7 +108,7 @@ class SearchController extends ControllerBase {
+       }
+ 
+       $result[] = [
+-        'id' => $node->id(),
++        'id' => $node->uuid(),
+         'title' => $node->getTitle(),
+         'type' => !empty($language) ? '[' . strtoupper($language) . '] ' . $node->getType() : $node->getType(),
+         'language_id' => $language,
+@@ -75,4 +122,84 @@ class SearchController extends ControllerBase {
+     return new JsonResponse($result);
+   }
+ 
++  /**
++   * Return a list of entities containing a piece of search text, using Linkit.
++   *
++   * Used for link auto-completion.
++   *
++   * @param \Symfony\Component\HttpFoundation\Request $request
++   *   The request.
++   *
++   * @param string $linkit_profile_id
++   *   The linkit profile to use.
++   *
++   * @return \Symfony\Component\HttpFoundation\JsonResponse|false
++   *   The JSON response.
++   *
++   * @throws \Drupal\Core\Entity\EntityMalformedException
++   */
++  public function searchLinkit(Request $request, $linkit_profile_id) {
++    $results = [];
++    $entity_type = (string) $request->query->get('type');
++    if ($entity_type !== 'post') {
++      return new JsonResponse($results);
++    }
++    /** @var ProfileInterface $linkit_profile */
++    if (!($linkit_profile = $this->entityTypeManager()->getStorage('linkit_profile')->load($linkit_profile_id))) {
++      return false;
++    }
++    $suggestionCollection = $this->linkitSuggestionManager->getSuggestions($linkit_profile, (string) $request->query->get('search'));
++    $langcode = $this->languageManager()->getCurrentLanguage()->getId();
++    foreach ($suggestionCollection->getSuggestions() as $suggestion) {
++      $url = NULL;
++      $entity = NULL;
++      $result = [
++        'id' => $suggestion->getPath(),
++        'title' => $suggestion->getLabel(),
++        'type' => $suggestion->getDescription(),
++        'url' => $suggestion->getPath(),
++      ];
++      if ($suggestion instanceof EntitySuggestion) {
++        // Hackish but we don't want to serialize all the things to access
++        // the non-exposed data.
++        $entity = \Closure::bind(function ($entityRepository){
++          return $entityRepository->loadEntityByUuid($this->entityTypeId, $this->entityUuid);
++        }, $suggestion, $suggestion)($this->entityRepository);
++        if ($entity) {
++          $entity = $this->entityRepository->getTranslationFromContext($entity, $langcode);
++          $substitutionId = \Closure::bind(function (){
++            return $this->substitutionId;
++          }, $suggestion, $suggestion)();
++          if (isset($substitutionId)) {
++            $urlObj = $this->linkitSubstitutionManager
++              ->createInstance($substitutionId)
++              ->getUrl($entity);
++            if ($urlObj instanceof Url) {
++              $urlObj = $urlObj->toString(TRUE);
++            }
++            $url = $urlObj->getGeneratedUrl();
++          }
++        }
++        $result['id'] = $entity->uuid();
++        $result['type'] = $this->getBundle($entity);
++        $result['url'] = $url ?? $suggestion->getPath();
++      }
++      $results[] = $result;
++    }
++
++    return new JsonResponse($results);
++  }
++
++  protected function getBundle(EntityInterface $entity) {
++    $entityType = $entity->getEntityType();
++    $bundle = NULL;
++    if ($entityType->hasKey('bundle')) {
++      $bundleKey = $entityType->getKey('bundle');
++      $bundle = $entity->get($bundleKey)->entity;
++    }
++    return $bundle
++      ? "{$entityType->getLabel()}: {$bundle->label()}"
++      : "{$entityType->getLabel()}";
++  }
++
+ }
