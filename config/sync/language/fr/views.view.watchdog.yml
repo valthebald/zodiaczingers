@@ -7,6 +7,8 @@ display:
           label: Type
         message:
           label: Message
+        name:
+          label: Utilisateur
         link:
           label: Actions
       exposed_form:

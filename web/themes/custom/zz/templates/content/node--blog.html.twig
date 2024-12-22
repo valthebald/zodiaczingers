@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * @see template_preprocess_node()
+ *
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'box',
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+{{ attach_library('zz/node') }}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% if page %}
+    <h1{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h1>
+    {% else %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+    {% endif %}
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    <footer class="node__meta">
+      {{ author_picture }}
+      <div{{ author_attributes.addClass('node__submitted') }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+
+  <div{{ content_attributes.addClass('node__content') }}>
+    {{ content }}
+  </div>
+
+</article>

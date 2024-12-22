@@ -7,6 +7,8 @@ display:
           label: Тип
         message:
           label: Сообщение
+        name:
+          label: Пользователь
         link:
           label: Операции
       exposed_form:

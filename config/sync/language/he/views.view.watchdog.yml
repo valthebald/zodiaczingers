@@ -7,6 +7,8 @@ display:
           label: סוג
         message:
           label: הודעה
+        name:
+          label: משתמש
         link:
           label: 'פעולות אפשריות'
       exposed_form:

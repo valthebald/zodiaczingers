@@ -7,6 +7,9 @@
       "3296968 - Drupal 10/11 compatibility": "patches/disqus/3296968.diff",
       "3359581 - Use core/once": "patches/disqus/3359581-once.diff",
       "PHP 8.3 fixes": "patches/disqus/php83.diff"
+    },
+    "drupal/gutenberg": {
+      "3213528 - Integrate with linkit": "patches/gutenberg/3213528-11.patch"
     }
   }
 }

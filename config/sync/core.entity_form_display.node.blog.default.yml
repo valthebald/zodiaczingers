@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.node.blog.body
     - field.field.node.blog.field_comments
+    - field.field.node.blog.field_image
     - field.field.node.blog.field_tags
+    - image.style.thumbnail
     - node.type.blog
   module:
     - disqus
+    - image
     - path
     - text
 id: node.blog.default
@@ -37,6 +40,14 @@ content:
     weight: 132
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags

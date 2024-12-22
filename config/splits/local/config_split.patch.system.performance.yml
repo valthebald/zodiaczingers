@@ -1,6 +1,16 @@
 adding:
+  cache:
+    page:
+      max_age: 900
   css:
     preprocess: false
+  js:
+    preprocess: false
 removing:
+  cache:
+    page:
+      max_age: 31536000
   css:
+    preprocess: true
+  js:
     preprocess: true

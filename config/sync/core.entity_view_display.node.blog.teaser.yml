@@ -6,9 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog.body
     - field.field.node.blog.field_comments
+    - field.field.node.blog.field_image
     - field.field.node.blog.field_tags
+    - image.style.large
     - node.type.blog
   module:
+    - image
     - text
     - user
 id: node.blog.teaser
@@ -23,6 +26,17 @@ content:
       trim_length: 600
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
     region: content
   field_tags:
     type: entity_reference_label

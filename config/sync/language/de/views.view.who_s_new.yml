@@ -5,3 +5,6 @@ display:
       exposed_form:
         options:
           reset_button_label: Zurücksetzen
+  block_1:
+    display_options:
+      block_category: Benutzer
