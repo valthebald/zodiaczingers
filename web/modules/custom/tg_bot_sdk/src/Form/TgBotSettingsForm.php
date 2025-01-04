@@ -35,12 +35,6 @@ class TgBotSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['api_key'] = [
-      '#type' => 'key_select',
-      '#title' => $this->t('Bot API Key'),
-      '#description' => $this->t(''),
-      '#config_target' => static::CONFIG_NAME . ':api_key',
-    ];
     $form['processing_mode'] = [
       '#type' => 'select',
       '#title' => $this->t('Processing mode'),

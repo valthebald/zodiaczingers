@@ -1,0 +1,5 @@
+disqus.settings:
+  title: 'Telegram bots'
+  parent: system.admin_config_services
+  description: 'List of configured Telegram bots.'
+  route_name: entity.telegram_bot.collection

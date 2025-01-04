@@ -3,17 +3,19 @@
 namespace Drupal\tg_bot_sdk;
 
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\rest\Attribute\RestResource;
-use Drupal\rest\Plugin\ResourceInterface;
+use Drupal\tg_bot_sdk\Attribute\TelegramBot;
+use Drupal\tg_bot_sdk\Plugin\BotInterface;
+use Telegram\Bot\BotsManager;
 
 /**
  * Manages discovery and instantiation of bot plugins.
  *
  * @see plugin_api
  */
-class BotPluginManager extends DefaultPluginManager {
+class BotPluginManager extends DefaultPluginManager implements BotPluginManagerInterface {
 
   /**
    * Constructs a new \Drupal\rest\Plugin\Type\ResourcePluginManager object.
@@ -26,18 +28,38 @@ class BotPluginManager extends DefaultPluginManager {
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler to invoke the alter hook with.
    */
-  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
+  public function __construct(
+    \Traversable $namespaces,
+    CacheBackendInterface $cache_backend,
+    ModuleHandlerInterface $module_handler,
+    protected EntityTypeManagerInterface $entityTypeManager,
+  ) {
     parent::__construct(
-      'Plugin/rest/resource',
+      'Plugin/TelegramBot',
       $namespaces,
       $module_handler,
-      ResourceInterface::class,
-      RestResource::class,
-      'Drupal\rest\Annotation\RestResource',
+      BotInterface::class,
+      TelegramBot::class,
+      '\Drupal\tg_bot_sdk\Annotation\TelegramBot',
     );
 
-    $this->setCacheBackend($cache_backend, 'rest_plugins');
-    $this->alterInfo('rest_resource');
+    $this->setCacheBackend($cache_backend, 'tg_bot_plugin');
+    $this->alterInfo('tg_bot_plugin');
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function announceBots(): bool {
+    $config = [];
+    foreach ($this->entityTypeManager->getStorage('telegram_bot')->loadMultiple() as $entity) {
+      $config['bots'][$entity->id()] = $entity->label();
+    }
+    if (empty($config['bots'])) {
+      return TRUE;
+    }
+    $botManager = new BotsManager($config);
+    $botManager;
   }
 
 }

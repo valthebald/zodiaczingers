@@ -1,4 +1,6 @@
 services:
+  _defaults:
+    autoconfigure: true
   cache_context.today:
     class: Drupal\zz_card\Cache\TodayCacheContext
     arguments: ['@datetime.time']
@@ -6,4 +8,8 @@ services:
       - { name: cache.context }
   plugin.manager.tg_bot:
     class: Drupal\tg_bot_sdk\BotPluginManager
-    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']
+    arguments:
+      - '@container.namespaces'
+      - '@cache.discovery'
+      - '@module_handler'
+      - '@entity_type.manager'

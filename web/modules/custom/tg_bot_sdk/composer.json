@@ -12,6 +12,7 @@
     ],
     "require": {
         "ext-curl": "*",
-        "irazasyed/telegram-bot-sdk": "^3.0"
+        "irazasyed/telegram-bot-sdk": "^3.0",
+        "drupal/key": "*"
     }
 }
