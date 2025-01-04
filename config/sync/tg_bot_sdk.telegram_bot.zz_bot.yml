@@ -1,0 +1,9 @@
+uuid: 7bac3aca-88b6-41bd-8a88-95476674b72a
+langcode: en
+status: true
+dependencies: {  }
+id: zz_bot
+bot_id: ZodiacZingersBot
+plugin_id: test
+label: 'ZZ bot'
+api_token: telegram_bot
