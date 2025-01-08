@@ -2,8 +2,21 @@ display:
   default:
     display_title: 'ברירת מחדל'
     display_options:
+      pager:
+        options:
+          tags:
+            first: '« הראשון'
+            last: 'העמוד האחרון »'
+          expose:
+            items_per_page_label: 'פריטים לעמוד'
+            items_per_page_options_all_label: '- הכל -'
+            offset_label: היסט
       exposed_form:
         options:
+          submit_button: החל
           reset_button_label: איתחול
+          exposed_sorts_label: 'מיון לפי'
+          sort_asc_label: 'סדר עולה'
+          sort_desc_label: יורד
   page_1:
     display_title: דף

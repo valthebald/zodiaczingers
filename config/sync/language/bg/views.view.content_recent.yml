@@ -4,4 +4,8 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Търси
           reset_button_label: Рестартирай
+      use_more_text: още...
+  block_1:
+    display_title: Блокирай

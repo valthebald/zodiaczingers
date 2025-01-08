@@ -17,6 +17,7 @@ display:
           label: Действия
       exposed_form:
         options:
+          submit_button: Филтър
           reset_button_label: Рестартирай
       filters:
         status:
@@ -28,6 +29,9 @@ display:
         roles_target_id:
           expose:
             label: Роля
+        permission:
+          expose:
+            label: Разрешение
   page_1:
     display_title: Страница
     display_options:

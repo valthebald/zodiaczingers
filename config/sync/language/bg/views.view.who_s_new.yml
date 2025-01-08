@@ -4,6 +4,7 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Търси
           reset_button_label: Рестартирай
   block_1:
     display_options:

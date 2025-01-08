@@ -5,15 +5,35 @@ display:
       fields:
         type:
           label: Тип
+        timestamp:
+          label: Дата
         message:
           label: Сообщение
         name:
           label: Пользователь
+          separator: ', '
         link:
           label: Операции
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
       exposed_form:
         options:
+          submit_button: Фильтр
           reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
+      empty:
+        area:
+          admin_label: 'В системном журнале нет сообщений.'
+          content: 'В системном журнале нет сообщений.'
       filters:
         type:
           expose:

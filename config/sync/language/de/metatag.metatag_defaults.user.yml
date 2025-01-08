@@ -1,1 +1,3 @@
 label: Benutzer
+tags:
+  description: '[site:name]'

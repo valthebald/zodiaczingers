@@ -5,6 +5,7 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Търси
           reset_button_label: Рестартирай
       arguments:
         tid:

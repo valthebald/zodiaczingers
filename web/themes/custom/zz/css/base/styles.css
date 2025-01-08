@@ -38,6 +38,12 @@ h1.card-header {
       color: white;
     }
   }
+  form {
+    text-align: justify;
+    .form-item {
+      margin: 10px 0;
+    }
+  }
 }
 
 .card a {

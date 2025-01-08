@@ -7,22 +7,38 @@ display:
       fields:
         title:
           label: Заглавие
+        type:
+          label: 'Тип на съдържанието'
+        name:
+          label: Автор
         status:
           label: Статус
+          settings:
+            format_custom_true: Публикувано
+        changed:
+          label: Обновено
         langcode:
           label: Език
         operations:
           label: Действия
       exposed_form:
         options:
+          submit_button: Филтър
           reset_button_label: Рестартирай
       filters:
         title:
           expose:
             label: Заглавие
+        type:
+          expose:
+            label: 'Тип на съдържанието'
         status:
           expose:
             label: Статус
+          group_info:
+            group_items:
+              1:
+                title: Публикувано
         langcode:
           expose:
             label: Език

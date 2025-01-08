@@ -4,7 +4,11 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: Применить
           reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
   block_1:
     display_options:
       block_category: Пользователь

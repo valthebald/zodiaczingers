@@ -7,22 +7,48 @@ display:
       fields:
         title:
           label: Заголовок
+        type:
+          label: 'Тип материала'
+          separator: ', '
+        name:
+          label: Автор
         status:
           label: Статус
+          settings:
+            format_custom_true: Опубликовано
+        changed:
+          label: Обновлено
         langcode:
           label: Язык
+          separator: ', '
         operations:
           label: Операции
+      pager:
+        options:
+          tags:
+            first: '« Первая'
+            last: 'Последняя »'
       exposed_form:
         options:
+          submit_button: Фильтр
           reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
       filters:
         title:
           expose:
             label: Заголовок
+        type:
+          expose:
+            label: 'Тип материала'
         status:
           expose:
             label: Статус
+          group_info:
+            group_items:
+              1:
+                title: Опубликовано
         langcode:
           expose:
             label: Язык

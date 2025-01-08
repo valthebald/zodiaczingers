@@ -1,8 +1,12 @@
 display:
   default:
     display_options:
+      fields:
+        block_content_bulk_form:
+          action_title: Действие
       exposed_form:
         options:
+          submit_button: Търси
           reset_button_label: Рестартирай
       filters:
         info:

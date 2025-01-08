@@ -5,13 +5,26 @@ display:
       fields:
         filename:
           label: שם
+          separator: ', '
+        filesize:
+          label: גודל
         status:
           label: מצב
         operations:
           label: 'פעולות אפשריות'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'פריטים לעמוד'
+            items_per_page_options_all_label: '- הכל -'
+            offset_label: היסט
       exposed_form:
         options:
+          submit_button: סינון
           reset_button_label: איתחול
+          exposed_sorts_label: 'מיון לפי'
+          sort_asc_label: 'סדר עולה'
+          sort_desc_label: יורד
       filters:
         status:
           expose:
@@ -23,6 +36,12 @@ display:
           label: יישות
         type:
           label: 'סוג ישות'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'פריטים לעמוד'
+            items_per_page_options_all_label: '- הכל -'
+            offset_label: היסט
       arguments:
         fid:
           exception:

@@ -5,8 +5,23 @@ display:
       fields:
         title:
           label: Titel
+        name:
+          label: Autor
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Elemente pro Seite'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Versatz
       exposed_form:
         options:
+          submit_button: Anwenden
           reset_button_label: Zurücksetzen
+          exposed_sorts_label: Sortierung
+          sort_asc_label: Aufsteigend
+          sort_desc_label: Absteigend
   page_1:
     display_title: Seite

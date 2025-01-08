@@ -2,5 +2,7 @@ settings:
   plugins:
     ckeditor5_codeBlock:
       languages:
-        -
+        0:
           label: 'Plain text'
+        9:
+          label: PHP

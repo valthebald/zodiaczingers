@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: B-qrrA7oRcyy2W-a4OjHSgOhpMNFBK4dP9yb2KHC6v4
+api_key: ''
+domain: zodiaczingers.ddev.site
+use_oauth: true
+api_timeout: 10
+cron: false
+batch_limit: 100
+api_classname: Mailchimp\Mailchimp
+test_mode: false
+enable_connected: false
+connected_id: null
+connected_paths: null
+webhook_hash: c65bbd9915a1e2326278997f67d46d10
+optin_check_email_msg: 'Please check your email to confirm your subscription.'

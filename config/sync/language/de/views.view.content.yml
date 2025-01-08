@@ -7,22 +7,48 @@ display:
       fields:
         title:
           label: Titel
+        type:
+          label: Inhaltstyp
+          separator: ', '
+        name:
+          label: Autor
         status:
           label: Status
+          settings:
+            format_custom_true: Veröffentlicht
+        changed:
+          label: Aktualisiert
         langcode:
           label: Sprache
+          separator: ', '
         operations:
           label: Aktionen
+      pager:
+        options:
+          tags:
+            first: '« Anfang'
+            last: 'Ende »'
       exposed_form:
         options:
+          submit_button: Filter
           reset_button_label: Zurücksetzen
+          exposed_sorts_label: Sortierung
+          sort_asc_label: Aufsteigend
+          sort_desc_label: Absteigend
       filters:
         title:
           expose:
             label: Titel
+        type:
+          expose:
+            label: Inhaltstyp
         status:
           expose:
             label: Status
+          group_info:
+            group_items:
+              1:
+                title: Veröffentlicht
         langcode:
           expose:
             label: Sprache

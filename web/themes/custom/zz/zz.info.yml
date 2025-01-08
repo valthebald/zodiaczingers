@@ -41,5 +41,6 @@ core_version_requirement: ^11
 generator: 'starterkit_theme:11.0.5'
 regions:
   header: Header
+  sidebar: Sidebar
   content: Content
   footer: Footer

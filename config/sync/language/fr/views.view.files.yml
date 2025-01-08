@@ -5,13 +5,27 @@ display:
       fields:
         filename:
           label: Nom
+          separator: ', '
+        filesize:
+          label: Taille
         status:
           label: État
+        changed:
+          label: 'Date de modification'
         operations:
           label: Actions
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
       exposed_form:
         options:
           reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       filters:
         status:
           expose:
@@ -23,6 +37,12 @@ display:
           label: Entité
         type:
           label: "Type d'entité"
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
       arguments:
         fid:
           exception:

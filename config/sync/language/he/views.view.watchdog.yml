@@ -5,15 +5,35 @@ display:
       fields:
         type:
           label: סוג
+        timestamp:
+          label: תאריך
         message:
           label: הודעה
         name:
           label: משתמש
+          separator: ', '
         link:
           label: 'פעולות אפשריות'
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'פריטים לעמוד'
+            items_per_page_options_all_label: '- הכל -'
+            offset_label: היסט
       exposed_form:
         options:
+          submit_button: סינון
           reset_button_label: איתחול
+          exposed_sorts_label: 'מיון לפי'
+          sort_asc_label: 'סדר עולה'
+          sort_desc_label: יורד
+      empty:
+        area:
+          admin_label: 'לא קיימות הודעות יומן.'
+          content: 'לא קיימות הודעות יומן.'
       filters:
         type:
           expose:

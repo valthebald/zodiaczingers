@@ -1,9 +1,30 @@
 display:
   default:
+    display_title: Основной
     display_options:
+      fields:
+        block_content_bulk_form:
+          action_title: Действие
+        field_pattern_sync_status:
+          separator: ', '
+        info:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
       exposed_form:
         options:
+          submit_button: Применить
           reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
       filters:
         info:
           expose:

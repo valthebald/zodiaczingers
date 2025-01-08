@@ -5,6 +5,8 @@ display:
       fields:
         type:
           label: Тип
+        timestamp:
+          label: Дата
         message:
           label: Съобщение
         name:
@@ -13,7 +15,12 @@ display:
           label: Действия
       exposed_form:
         options:
+          submit_button: Филтър
           reset_button_label: Рестартирай
+      empty:
+        area:
+          admin_label: 'Няма лог. съобщения'
+          content: 'Няма лог. съобщения'
       filters:
         type:
           expose:

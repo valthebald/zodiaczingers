@@ -50,6 +50,11 @@
   <div class="layout-content">
     {{ page.content }}
   </div>{# /.layout-content #}
+  {% if page.sidebar %}
+    <div class="layout-content">
+    {{ page.sidebar }}
+    </div>{# /.layout-content #}
+  {% endif %}
 </main>
 {% if page.footer %}
   <footer role="contentinfo" class="box">

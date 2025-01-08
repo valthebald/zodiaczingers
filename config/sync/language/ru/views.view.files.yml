@@ -5,13 +5,28 @@ display:
       fields:
         filename:
           label: Название
+          separator: ', '
+        filesize:
+          label: Размер
         status:
           label: Статус
+        changed:
+          label: 'Дата изменения'
         operations:
           label: Операции
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
       exposed_form:
         options:
+          submit_button: Фильтр
           reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
       filters:
         status:
           expose:
@@ -23,6 +38,12 @@ display:
           label: Сущность
         type:
           label: 'Тип сущности'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
       arguments:
         fid:
           exception:

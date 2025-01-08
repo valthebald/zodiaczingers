@@ -4,7 +4,11 @@ display:
     display_options:
       exposed_form:
         options:
+          submit_button: החל
           reset_button_label: איתחול
+          exposed_sorts_label: 'מיון לפי'
+          sort_asc_label: 'סדר עולה'
+          sort_desc_label: יורד
   block_1:
     display_options:
       block_category: משתמש

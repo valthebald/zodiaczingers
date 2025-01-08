@@ -7,22 +7,48 @@ display:
       fields:
         title:
           label: כותרת
+        type:
+          label: 'סוג תוכן'
+          separator: ', '
+        name:
+          label: מחבר/ת
         status:
           label: מצב
+          settings:
+            format_custom_true: מפורסם
+        changed:
+          label: עודכן
         langcode:
           label: שפה
+          separator: ', '
         operations:
           label: 'פעולות אפשריות'
+      pager:
+        options:
+          tags:
+            first: '« הראשון'
+            last: 'העמוד האחרון »'
       exposed_form:
         options:
+          submit_button: סינון
           reset_button_label: איתחול
+          exposed_sorts_label: 'מיון לפי'
+          sort_asc_label: 'סדר עולה'
+          sort_desc_label: יורד
       filters:
         title:
           expose:
             label: כותרת
+        type:
+          expose:
+            label: 'סוג תוכן'
         status:
           expose:
             label: מצב
+          group_info:
+            group_items:
+              1:
+                title: מפורסם
         langcode:
           expose:
             label: שפה

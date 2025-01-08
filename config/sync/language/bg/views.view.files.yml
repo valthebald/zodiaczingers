@@ -5,12 +5,17 @@ display:
       fields:
         filename:
           label: Име
+        filesize:
+          label: Размер
         status:
           label: Статус
+        changed:
+          label: 'Дата на промяна'
         operations:
           label: Действия
       exposed_form:
         options:
+          submit_button: Филтър
           reset_button_label: Рестартирай
       filters:
         status:

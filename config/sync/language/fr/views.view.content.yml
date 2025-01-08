@@ -7,22 +7,47 @@ display:
       fields:
         title:
           label: Titre
+        type:
+          label: 'Type de contenu'
+          separator: ', '
+        name:
+          label: Auteur
         status:
           label: État
+          settings:
+            format_custom_true: Publié
+        changed:
+          label: 'Mis à jour'
         langcode:
           label: Langue
+          separator: ', '
         operations:
           label: Actions
+      pager:
+        options:
+          tags:
+            first: '« Premier'
+            last: 'Dernier »'
       exposed_form:
         options:
           reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       filters:
         title:
           expose:
             label: Titre
+        type:
+          expose:
+            label: 'Type de contenu'
         status:
           expose:
             label: État
+          group_info:
+            group_items:
+              1:
+                title: Publié
         langcode:
           expose:
             label: Langue

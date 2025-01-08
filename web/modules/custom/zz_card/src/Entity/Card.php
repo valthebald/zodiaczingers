@@ -3,51 +3,50 @@
 namespace Drupal\zz_card\Entity;
 
 
+use Drupal\Core\Entity\Attribute\ContentEntityType;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityPublishedInterface;
 use Drupal\Core\Entity\EntityPublishedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
+use Drupal\views\EntityViewsData;
+use Drupal\zz_card\CardStorage;
 
 /**
- * Defines the node entity class.
- *
- * @ContentEntityType(
- *   id = "zz_card",
- *   label = @Translation("Horoscope card"),
- *   label_collection = @Translation("Horoscope cards"),
- *   label_singular = @Translation("card"),
- *   label_plural = @Translation("cards"),
- *   label_count = @PluralTranslation(
- *     singular = "@count card",
- *     plural = "@count cards"
- *   ),
- *   bundle_label = @Translation("Content type"),
- *   handlers = {
- *     "storage" = "Drupal\zz_card\CardStorage"
- *   },
- *   base_table = "zz_card",
- *   data_table = "zz_card_data",
- *   show_revision_ui = TRUE,
- *   translatable = TRUE,
- *   entity_keys = {
- *     "id" = "id",
- *     "label" = "title",
- *     "langcode" = "langcode",
- *     "uuid" = "uuid",
- *     "status" = "status",
- *     "published" = "status",
- *     "owner" = "uid",
- *   },
- *   links = {
- *     "canonical" = "/zz_card/{zz_card}",
- *     "delete-form" = "/zz_card/{zz_card}",
- *     "edit-form" = "/zz_card/{zz_card}/edit",
- *     "create" = "/zz_card",
- *   }
- * )
+ * Defines horoscope card entity class.
  */
+#[ContentEntityType(
+  id: 'zz_card',
+  label: new TranslatableMarkup('Horoscope card'),
+  label_collection: new TranslatableMarkup('Horoscope cards'),
+  label_singular: new TranslatableMarkup('card'),
+  label_plural: new TranslatableMarkup('cards'),
+  entity_keys: [
+    'id' => 'id',
+    'label' => 'title',
+    'langcode' => 'langcode',
+    'uuid' => 'uuid',
+    'status' => 'status',
+    'published' => "status",
+    'owner' => "uid",
+  ],
+  handlers: [
+    'views_data' => EntityViewsData::class,
+    'storage' => CardStorage::class,
+  ],
+  links: [
+    'canonical' => '/zz_card/{zz_card}',
+    'delete-form' => '/zz_card/{zz_card}',
+    'edit-form' => '/zz_card/{zz_card}/edit',
+    'create' => '/zz_card',
+  ],
+  base_table: 'zz_card',
+  data_table: 'zz_card_data',
+  translatable: TRUE,
+  show_revision_ui: TRUE,
+)]
 class Card extends ContentEntityBase implements EntityPublishedInterface {
 
   use EntityPublishedTrait;

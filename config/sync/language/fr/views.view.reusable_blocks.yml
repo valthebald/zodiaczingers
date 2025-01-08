@@ -1,9 +1,30 @@
 display:
   default:
+    display_title: Principal
     display_options:
+      fields:
+        block_content_bulk_form:
+          action_title: Action
+        field_pattern_sync_status:
+          separator: ', '
+        info:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
       exposed_form:
         options:
+          submit_button: Appliquer
           reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       filters:
         info:
           expose:

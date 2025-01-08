@@ -1,0 +1,20 @@
+uuid: 137d29cc-1be8-45ba-be86-ac7f1fb9d339
+langcode: en
+status: true
+dependencies:
+  module:
+    - mailchimp_signup
+  theme:
+    - zz
+id: zz_subscribe
+theme: zz
+region: sidebar
+weight: 0
+provider: null
+plugin: 'mailchimp_signup_subscribe_block:horoscope_signup'
+settings:
+  id: 'mailchimp_signup_subscribe_block:horoscope_signup'
+  label: 'Get horoscopes in your mailbox'
+  label_display: visible
+  provider: mailchimp_signup
+visibility: {  }
