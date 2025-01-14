@@ -1750,17 +1750,17 @@
         },
         {
             "name": "drupal/ai",
-            "version": "1.0.0-beta7",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai.git",
-                "reference": "1.0.0-beta7"
+                "reference": "1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai-1.0.0-beta7.zip",
-                "reference": "1.0.0-beta7",
-                "shasum": "9b84268da10cd5de1efe64dd79ea7e4d6a6049e3"
+                "url": "https://ftp.drupal.org/files/projects/ai-1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": "09c073147acdcd17f9b0d466437b81d33d892532"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -1784,11 +1784,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta7",
-                    "datestamp": "1735832311",
+                    "version": "1.0.1",
+                    "datestamp": "1736776182",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -1897,20 +1897,20 @@
         },
         {
             "name": "drupal/ai_provider_openai",
-            "version": "1.0.0-beta2",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_provider_openai.git",
-                "reference": "1.0.0-beta2"
+                "reference": "1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_provider_openai-1.0.0-beta2.zip",
-                "reference": "1.0.0-beta2",
-                "shasum": "b7b9807084ffaeed68dc4e31853a16c879ce1fcc"
+                "url": "https://ftp.drupal.org/files/projects/ai_provider_openai-1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": "a29de1c00963d018430320a3b8202f100f9b7c81"
             },
             "require": {
-                "drupal/ai": "^1.0.0-beta6",
+                "drupal/ai": "^1.0.0",
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
                 "drupal/key": "^1.18",
                 "openai-php/client": ">=v0.10.1"
@@ -1918,11 +1918,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta2",
-                    "datestamp": "1735832645",
+                    "version": "1.0.1",
+                    "datestamp": "1736872381",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3268,17 +3268,17 @@
         },
         {
             "name": "drupal/klaro",
-            "version": "3.0.0-rc16",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/klaro.git",
-                "reference": "3.0.0-rc16"
+                "reference": "3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/klaro-3.0.0-rc16.zip",
-                "reference": "3.0.0-rc16",
-                "shasum": "e2def65ee833d97964094c483728343f43f282bd"
+                "url": "https://ftp.drupal.org/files/projects/klaro-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "e8ecfd168845f003e46c4472465e36bab612b510"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -3287,11 +3287,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.0-rc16",
-                    "datestamp": "1734702874",
+                    "version": "3.0.0",
+                    "datestamp": "1736540657",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3333,16 +3333,16 @@
         },
         {
             "name": "drupal/klaro_js",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/klaro_js.git",
-                "reference": "bd0aa9194e26e2d1b7b7ba2e8607efd4feb58ac3"
+                "reference": "c5398a0bc9dccd3ccc2c33c9393966bc874bba8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fklaro_js/repository/archive.zip?sha=bd0aa9194e26e2d1b7b7ba2e8607efd4feb58ac3",
-                "reference": "bd0aa9194e26e2d1b7b7ba2e8607efd4feb58ac3",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fklaro_js/repository/archive.zip?sha=c5398a0bc9dccd3ccc2c33c9393966bc874bba8c",
+                "reference": "c5398a0bc9dccd3ccc2c33c9393966bc874bba8c",
                 "shasum": ""
             },
             "type": "drupal-library",
@@ -3357,9 +3357,9 @@
             "description": "Mirror of the Klaro consent manager javascript library tagged as a Drupal library.",
             "homepage": "https://github.com/klaro-org/klaro-js/",
             "support": {
-                "source": "https://git.drupalcode.org/project/klaro_js/-/tree/0.7.22.1"
+                "source": "https://git.drupalcode.org/project/klaro_js/-/tree/3.0.1"
             },
-            "time": "2024-10-30T09:59:24+00:00"
+            "time": "2024-12-19T08:40:21+00:00"
         },
         {
             "name": "drupal/linkit",
@@ -3730,17 +3730,17 @@
         },
         {
             "name": "drupal/piwik_noscript",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/piwik_noscript.git",
-                "reference": "8.x-1.15"
+                "reference": "8.x-1.16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/piwik_noscript-8.x-1.15.zip",
-                "reference": "8.x-1.15",
-                "shasum": "6eef5230f992ffcb65de28fed8d71887f30c085f"
+                "url": "https://ftp.drupal.org/files/projects/piwik_noscript-8.x-1.16.zip",
+                "reference": "8.x-1.16",
+                "shasum": "f82dd88a337e4478efc769c47d5c69b90dda3153"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12"
@@ -3748,8 +3748,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.15",
-                    "datestamp": "1716361766",
+                    "version": "8.x-1.16",
+                    "datestamp": "1736365326",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5175,7 +5175,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v11.37.0",
+            "version": "v11.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -5231,7 +5231,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v11.37.0",
+            "version": "v11.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -5277,16 +5277,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v11.37.0",
+            "version": "v11.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "184317f701ba20ca265e36808ed54b75b115972d"
+                "reference": "534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/184317f701ba20ca265e36808ed54b75b115972d",
-                "reference": "184317f701ba20ca265e36808ed54b75b115972d",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75",
+                "reference": "534b697fc1dd9fbdd9fbf2f33fc9dcbb943dea75",
                 "shasum": ""
             },
             "require": {
@@ -5321,11 +5321,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-11-25T15:33:38+00:00"
+            "time": "2025-01-10T20:57:00+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v11.37.0",
+            "version": "v11.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -5371,16 +5371,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v11.37.0",
+            "version": "v11.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "388c916b143a104e732cbaf7e6b19cd7a4e21a1e"
+                "reference": "0f31e94ea66b1bc284714fc43cb0d9f74b977f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/388c916b143a104e732cbaf7e6b19cd7a4e21a1e",
-                "reference": "388c916b143a104e732cbaf7e6b19cd7a4e21a1e",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/0f31e94ea66b1bc284714fc43cb0d9f74b977f0d",
+                "reference": "0f31e94ea66b1bc284714fc43cb0d9f74b977f0d",
                 "shasum": ""
             },
             "require": {
@@ -5444,7 +5444,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-12-20T14:43:22+00:00"
+            "time": "2025-01-13T16:49:31+00:00"
         },
         {
             "name": "irazasyed/telegram-bot-sdk",
@@ -6061,12 +6061,12 @@
             "version": "3.8.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
+                "url": "https://github.com/CarbonPHP/carbon.git",
                 "reference": "129700ed449b1f02d70272d2ac802357c8c30c58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/129700ed449b1f02d70272d2ac802357c8c30c58",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/129700ed449b1f02d70272d2ac802357c8c30c58",
                 "reference": "129700ed449b1f02d70272d2ac802357c8c30c58",
                 "shasum": ""
             },

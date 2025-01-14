@@ -32,3 +32,5 @@ library:
   learn_more_as_button: false
   additional_class: ''
   html_texts: false
+  auto_focus: true
+override_css: false
