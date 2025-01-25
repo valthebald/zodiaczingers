@@ -1750,17 +1750,17 @@
         },
         {
             "name": "drupal/ai",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai.git",
-                "reference": "1.0.2"
+                "reference": "1.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai-1.0.2.zip",
-                "reference": "1.0.2",
-                "shasum": "cbf7922dd41456951a6f7a1589a8f8376edba177"
+                "url": "https://ftp.drupal.org/files/projects/ai-1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": "069b3ee1dd1825d7529372591ca5dea595cd2ab1"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -1769,12 +1769,13 @@
                 "yethee/tiktoken": "^0.5.1"
             },
             "require-dev": {
+                "allanpichardo/mysql-vector": "^2.0",
                 "drupal/ai_assistant_api": "*",
                 "drupal/ai_search-ai_search": "*",
                 "drupal/eca": "^2.0",
                 "drupal/field_validation": "^3.0@beta",
                 "drupal/key": "*",
-                "drupal/search_api": "^1.35",
+                "drupal/search_api": "^1.x-dev",
                 "drupal/search_api_solr": "^4.0",
                 "drupal/token": "^1.14"
             },
@@ -1784,8 +1785,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.2",
-                    "datestamp": "1736957364",
+                    "version": "1.0.3",
+                    "datestamp": "1737566992",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3210,17 +3211,17 @@
         },
         {
             "name": "drupal/gutenberg",
-            "version": "3.0.5",
+            "version": "3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gutenberg.git",
-                "reference": "3.0.5"
+                "reference": "3.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gutenberg-3.0.5.zip",
-                "reference": "3.0.5",
-                "shasum": "1a53da41261145a4e1c1b7c52a7a5d853639389f"
+                "url": "https://ftp.drupal.org/files/projects/gutenberg-3.0.6.zip",
+                "reference": "3.0.6",
+                "shasum": "1810358286a21c19269b34f1aec92a806b6f89ff"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -3233,8 +3234,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.5",
-                    "datestamp": "1728492453",
+                    "version": "3.0.6",
+                    "datestamp": "1737591143",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

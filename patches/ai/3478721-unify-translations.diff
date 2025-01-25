@@ -32,7 +32,7 @@ index 1714d254b936ead93a7abcb56a8c9cadb8b471dc..621e836b4ecfcedb4bea214d6c75ab37
    When translating the context text from the source language {{ source_lang_name }}
    to the target language {{ dest_lang_name }} take the following instructions into consideration:
 diff --git a/modules/ai_translate/src/Controller/AiTranslateController.php b/modules/ai_translate/src/Controller/AiTranslateController.php
-index 814b80a22da6d29992dac86d3399086f0b6c11bb..0a2e5aa35e381cc77184a612f8773c12ea763cfe 100644
+index 31d89ad3e9c27715168a46854edef80e55ea5d87..0a2e5aa35e381cc77184a612f8773c12ea763cfe 100644
 --- a/modules/ai_translate/src/Controller/AiTranslateController.php
 +++ b/modules/ai_translate/src/Controller/AiTranslateController.php
 @@ -3,20 +3,16 @@
@@ -160,7 +160,7 @@ index 814b80a22da6d29992dac86d3399086f0b6c11bb..0a2e5aa35e381cc77184a612f8773c12
 -      $this->moduleHandler->alter('ai_translate_translation', $messages, $provider, $provider_config['model_id']);
 -
 -      /** @var /Drupal\ai\OperationType\Chat\ChatOutput $message */
--      $message = $provider->chat($messages, $provider_config['model_id'])->getNormalized();
+-      $message = $provider->chat($messages, $provider_config['model_id'], ['ai_translate'])->getNormalized();
 -    }
 -    catch (GuzzleException $exception) {
 -      // Error handling for the API call.
@@ -346,6 +346,21 @@ index acd6cdb0367576bc1592c01e91dfea8c5057ad65..20a72806bf5e84ec01d6efd920e3f740
 +  }
 +
  }
+diff --git a/modules/ai_translate/src/Form/AiTranslateForm.php b/modules/ai_translate/src/Form/AiTranslateForm.php
+index 2926722ccbf6a584f13e90b3cd51ae0c5fdf62aa..3a2c447a88d6b401c1b8e6d5bdf531cb7f3d5dba 100644
+--- a/modules/ai_translate/src/Form/AiTranslateForm.php
++++ b/modules/ai_translate/src/Form/AiTranslateForm.php
+@@ -133,6 +133,10 @@ class AiTranslateForm extends FormBase {
+       if ($lang_from !== $langcode && !$entity->hasTranslation($langcode)) {
+         $model = $config->get($langcode . '_model') ?? '';
+         $parts = explode('__', $model);
++        if (empty($parts[0])) {
++          $default_model = $this->providerManager->getSimpleDefaultProviderOptions('chat');
++          $parts1 = explode('__', $default_model);
++          $ai_model = $parts1[1];
+         if ($model == "" || empty($parts[0])) {
+           $default_model = $this->providerManager->getSimpleDefaultProviderOptions('chat');
+           if ($default_model == "") {
 diff --git a/modules/ai_translate/src/Form/AiTranslateSettingsForm.php b/modules/ai_translate/src/Form/AiTranslateSettingsForm.php
 index 44cf87d8f8cc2770b513921ec1731cf5e4b256f4..2256236386b32cdcc5b61aab3018e1f1c0560333 100644
 --- a/modules/ai_translate/src/Form/AiTranslateSettingsForm.php
