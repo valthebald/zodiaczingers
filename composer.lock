@@ -3467,17 +3467,17 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "7.0.2",
+            "version": "7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "7.0.2"
+                "reference": "7.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.2.zip",
-                "reference": "7.0.2",
-                "shasum": "939ead6e7feeb11c78596b470deaf9facad4c9e9"
+                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.3.zip",
+                "reference": "7.0.3",
+                "shasum": "bc880d9fbc08a1cbd1ee76fab845841ec79ce4e7"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12"
@@ -3489,8 +3489,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "7.0.2",
-                    "datestamp": "1734967499",
+                    "version": "7.0.3",
+                    "datestamp": "1738264704",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3626,17 +3626,17 @@
         },
         {
             "name": "drupal/matomo",
-            "version": "2.0.0-alpha1",
+            "version": "2.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/matomo.git",
-                "reference": "2.0.0-alpha1"
+                "reference": "2.0.0-alpha2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/matomo-2.0.0-alpha1.zip",
-                "reference": "2.0.0-alpha1",
-                "shasum": "fb7f0f44744df77763fd819764ef6e248e02c95c"
+                "url": "https://ftp.drupal.org/files/projects/matomo-2.0.0-alpha2.zip",
+                "reference": "2.0.0-alpha2",
+                "shasum": "2c05f3f4776ba1893b1cb7739501837702da41b0"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12"
@@ -3654,8 +3654,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha1",
-                    "datestamp": "1715372190",
+                    "version": "2.0.0-alpha2",
+                    "datestamp": "1738172644",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -3668,11 +3668,11 @@
             ],
             "authors": [
                 {
-                    "name": "C-Logemann",
+                    "name": "c-logemann",
                     "homepage": "https://www.drupal.org/user/218368"
                 },
                 {
-                    "name": "Grimreaper",
+                    "name": "grimreaper",
                     "homepage": "https://www.drupal.org/user/2388214"
                 },
                 {
@@ -4189,17 +4189,17 @@
         },
         {
             "name": "drupal/single_content_sync",
-            "version": "1.4.8",
+            "version": "1.4.10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/single_content_sync.git",
-                "reference": "1.4.8"
+                "reference": "1.4.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/single_content_sync-1.4.8.zip",
-                "reference": "1.4.8",
-                "shasum": "d2cac096e745432fc893428f499ef356d14d8b8d"
+                "url": "https://ftp.drupal.org/files/projects/single_content_sync-1.4.10.zip",
+                "reference": "1.4.10",
+                "shasum": "c0c0836b31406e017e00cc5976c984c1e3114644"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -4212,6 +4212,7 @@
                 "drupal/block_field": "*",
                 "drupal/color_field": "*",
                 "drupal/dynamic_entity_reference": "*",
+                "drupal/focal_point": "*",
                 "drupal/geofield": "*",
                 "drupal/geolocation": "*",
                 "drupal/metatag": "*",
@@ -4228,8 +4229,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.4.8",
-                    "datestamp": "1734610972",
+                    "version": "1.4.10",
+                    "datestamp": "1738182134",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
