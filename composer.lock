@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7c2f7211cf6539a10d0830bcbef4285",
+    "content-hash": "fc507f714afcf42ae2470d47f3e63d23",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3316,6 +3316,65 @@
             }
         },
         {
+            "name": "drupal/jsonrpc",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jsonrpc.git",
+                "reference": "2.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jsonrpc-2.1.2.zip",
+                "reference": "2.1.2",
+                "shasum": "a1b282cff6e6d8f58b881246baeb9bee31ac29e9"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
+                "e0ipso/shaper": "^1.2.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.2",
+                    "datestamp": "1726276215",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "homepage": "https://www.drupal.org/user/3616626",
+                    "email": "mateu.aguilo.bosch@gmail.com"
+                },
+                {
+                    "name": "Gabriel Sullice",
+                    "homepage": "https://www.drupal.org/user/550110",
+                    "email": "gabriel@sullice.com"
+                },
+                {
+                    "name": "gabesullice",
+                    "homepage": "https://www.drupal.org/user/2287430"
+                },
+                {
+                    "name": "ptmkenny",
+                    "homepage": "https://www.drupal.org/user/97885"
+                }
+            ],
+            "description": "Infrastructure for JSON-RPC 2.0 compliant web services.",
+            "homepage": "https://www.drupal.org/project/jsonrpc",
+            "support": {
+                "source": "https://git.drupalcode.org/project/jsonrpc"
+            }
+        },
+        {
             "name": "drupal/key",
             "version": "1.20.0",
             "source": {
@@ -3641,6 +3700,40 @@
             }
         },
         {
+            "name": "drupal/mailer_transport",
+            "version": "1.6.1",
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
+                "drupal/symfony_mailer": "^1"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "1.6.1",
+                    "datestamp": "1749109091",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "adamps",
+                    "homepage": "https://www.drupal.org/user/2650563"
+                }
+            ],
+            "description": "Placeholder to support upgrade to v2.x",
+            "homepage": "https://www.drupal.org/project/symfony_mailer",
+            "support": {
+                "source": "https://git.drupalcode.org/project/symfony_mailer"
+            }
+        },
+        {
             "name": "drupal/matomo",
             "version": "2.0.0-alpha3",
             "source": {
@@ -3706,18 +3799,81 @@
             }
         },
         {
-            "name": "drupal/metatag",
-            "version": "2.1.0",
+            "name": "drupal/mcp",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/metatag.git",
-                "reference": "2.1.0"
+                "url": "https://git.drupalcode.org/project/mcp.git",
+                "reference": "1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/metatag-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "c28fe2fdac68a9370a6af6cbafff4425dd5148f3"
+                "url": "https://ftp.drupal.org/files/projects/mcp-1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": "b669e38b49dcaf6ea62bb65da11f405bd59c3e1f"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
+                "drupal/jsonrpc": "^2.1",
+                "drupal/key": "^1.19",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "drupal/ai": "1.1.x-dev@dev",
+                "drupal/ai_agents": "1.1.x-dev@dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.1",
+                    "datestamp": "1744891537",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "gagosha",
+                    "homepage": "https://www.drupal.org/user/3506581"
+                },
+                {
+                    "name": "jibla",
+                    "homepage": "https://www.drupal.org/user/1013184"
+                },
+                {
+                    "name": "lekso surameli",
+                    "homepage": "https://www.drupal.org/user/3709459"
+                },
+                {
+                    "name": "marcus_johansson",
+                    "homepage": "https://www.drupal.org/user/385947"
+                }
+            ],
+            "description": "The MCP Drupal module implements the Model Context Protocol (MCP)",
+            "homepage": "https://www.drupal.org/project/mcp",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mcp"
+            }
+        },
+        {
+            "name": "drupal/metatag",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/metatag.git",
+                "reference": "2.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/metatag-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "94f272db388cbf1e4df775a2677f8c35818c9382"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -3725,7 +3881,7 @@
                 "php": ">=8.0"
             },
             "require-dev": {
-                "drupal/forum": "*",
+                "drupal/forum": "1.x-dev",
                 "drupal/hal": "^1 || ^2 || ^9",
                 "drupal/metatag_dc": "*",
                 "drupal/metatag_open_graph": "*",
@@ -3737,8 +3893,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1731004042",
+                    "version": "2.1.1",
+                    "datestamp": "1748539484",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4375,20 +4531,21 @@
         },
         {
             "name": "drupal/symfony_mailer",
-            "version": "1.5.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/symfony_mailer.git",
-                "reference": "1.5.0"
+                "reference": "1.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/symfony_mailer-1.5.0.zip",
-                "reference": "1.5.0",
-                "shasum": "dbec446b7112ac2e50580ceda9e80ea806498047"
+                "url": "https://ftp.drupal.org/files/projects/symfony_mailer-1.6.1.zip",
+                "reference": "1.6.1",
+                "shasum": "254b9b6177c83930599d2d0216d40c57f093818a"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
+                "drupal/mailer_transport": "*",
                 "html2text/html2text": "^4.0.1",
                 "symfony/mailer": "^6.0 || ^7.0",
                 "tijsverkoyen/css-to-inline-styles": "^2.2"
@@ -4396,8 +4553,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.5.0",
-                    "datestamp": "1723739690",
+                    "version": "1.6.1",
+                    "datestamp": "1749109091",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4691,6 +4848,52 @@
                 }
             ],
             "time": "2024-10-08T11:42:23+00:00"
+        },
+        {
+            "name": "e0ipso/shaper",
+            "version": "1.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/e0ipso/shaper.git",
+                "reference": "1d9e726c98d3168d30c1180cd836d13267744fb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/e0ipso/shaper/zipball/1d9e726c98d3168d30c1180cd836d13267744fb7",
+                "reference": "1d9e726c98d3168d30c1180cd836d13267744fb7",
+                "shasum": ""
+            },
+            "require": {
+                "justinrainbow/json-schema": "^5.2 || ^6.3"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpcov": "^8.2",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shaper\\": "src",
+                    "Shaper\\Tests\\": "tests/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mateu Aguiló Bosch",
+                    "email": "mateu.aguilo.bosch@gmail.com"
+                }
+            ],
+            "description": "Lightweight library to handle in and out transformations in PHP.",
+            "support": {
+                "issues": "https://github.com/e0ipso/shaper/issues",
+                "source": "https://github.com/e0ipso/shaper/tree/1.2.7"
+            },
+            "time": "2025-04-04T08:14:01+00:00"
         },
         {
             "name": "egulias/email-validator",
