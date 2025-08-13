@@ -1401,33 +1401,32 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.10",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc"
+                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5817d0659c5b50c9b950feb9af7b9668e2c436bc",
-                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
+                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^11.0",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.3",
-                "phpunit/phpunit": "^8.5 || ^9.5",
-                "vimeo/psalm": "^4.25 || ^5.4"
+                "doctrine/coding-standard": "^12.0 || ^13.0",
+                "phpstan/phpstan": "^1.12 || ^2.0",
+                "phpstan/phpstan-phpunit": "^1.4 || ^2.0",
+                "phpstan/phpstan-strict-rules": "^1.6 || ^2.0",
+                "phpunit/phpunit": "^8.5 || ^12.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
+                    "Doctrine\\Inflector\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1472,7 +1471,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.10"
+                "source": "https://github.com/doctrine/inflector/tree/2.1.0"
             },
             "funding": [
                 {
@@ -1488,7 +1487,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-18T20:23:39+00:00"
+            "time": "2025-08-10T19:31:58+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -2501,16 +2500,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "11.2.2",
+            "version": "11.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "4a1db0db3b144a42daa0887e904f942a55fe5b6b"
+                "reference": "2e115b19fcff820bd7e2ba41aeaa23ff04cfe8a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/4a1db0db3b144a42daa0887e904f942a55fe5b6b",
-                "reference": "4a1db0db3b144a42daa0887e904f942a55fe5b6b",
+                "url": "https://api.github.com/repos/drupal/core/zipball/2e115b19fcff820bd7e2ba41aeaa23ff04cfe8a8",
+                "reference": "2e115b19fcff820bd7e2ba41aeaa23ff04cfe8a8",
                 "shasum": ""
             },
             "require": {
@@ -2564,6 +2563,7 @@
                 "twig/twig": "^3.21.0"
             },
             "conflict": {
+                "dealerdirect/phpcodesniffer-composer-installer": "1.1.0",
                 "drupal/automatic_updates": "<4",
                 "drupal/project_browser": "<2.1",
                 "drush/drush": "<12.4.3"
@@ -2666,13 +2666,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/11.2.2"
+                "source": "https://github.com/drupal/core/tree/11.2.3"
             },
-            "time": "2025-06-26T13:56:54+00:00"
+            "time": "2025-08-07T10:22:57+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "11.2.2",
+            "version": "11.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2716,13 +2716,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.2.2"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/11.2.3"
             },
             "time": "2025-05-05T16:18:58+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "11.2.2",
+            "version": "11.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -2757,22 +2757,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/11.2.2"
+                "source": "https://github.com/drupal/core-project-message/tree/11.2.3"
             },
             "time": "2025-02-03T10:59:29+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "11.2.2",
+            "version": "11.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "0f9d479fdb22596d8a8e23c39376302a3bb3df56"
+                "reference": "07ed2ffda41e106017a8b4ed450c8bb0d775bd35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/0f9d479fdb22596d8a8e23c39376302a3bb3df56",
-                "reference": "0f9d479fdb22596d8a8e23c39376302a3bb3df56",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/07ed2ffda41e106017a8b4ed450c8bb0d775bd35",
+                "reference": "07ed2ffda41e106017a8b4ed450c8bb0d775bd35",
                 "shasum": ""
             },
             "require": {
@@ -2801,7 +2801,6 @@
                 "psr/log": "~3.0.2",
                 "ralouphie/getallheaders": "~3.0.3",
                 "revolt/event-loop": "~v1.0.7",
-                "sebastian/diff": "~6.0.2",
                 "symfony/console": "~v7.3.0",
                 "symfony/dependency-injection": "~v7.3.0",
                 "symfony/deprecation-contracts": "~v3.6.0",
@@ -2844,9 +2843,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/11.2.2"
+                "source": "https://github.com/drupal/core-recommended/tree/11.2.3"
             },
-            "time": "2025-06-26T13:56:54+00:00"
+            "time": "2025-08-07T10:22:57+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -3560,17 +3559,17 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "7.0.7",
+            "version": "7.0.8",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "7.0.7"
+                "reference": "7.0.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.7.zip",
-                "reference": "7.0.7",
-                "shasum": "aa10493dfa34f4f8ce51313d47c66b21b9596f3e"
+                "url": "https://ftp.drupal.org/files/projects/linkit-7.0.8.zip",
+                "reference": "7.0.8",
+                "shasum": "3a16053650934b3942cf369ac1ee3ad85c655d45"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12"
@@ -3582,8 +3581,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "7.0.7",
-                    "datestamp": "1753116879",
+                    "version": "7.0.8",
+                    "datestamp": "1754406731",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7878,29 +7877,29 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "6.0.2",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "b4ccd857127db5d41a5b676f24b51371d76d8544"
+                "reference": "7ab1ea946c012266ca32390913653d844ecd085f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/b4ccd857127db5d41a5b676f24b51371d76d8544",
-                "reference": "b4ccd857127db5d41a5b676f24b51371d76d8544",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/7ab1ea946c012266ca32390913653d844ecd085f",
+                "reference": "7ab1ea946c012266ca32390913653d844ecd085f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2"
+                "php": ">=8.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^11.0",
-                "symfony/process": "^4.2 || ^5"
+                "phpunit/phpunit": "^12.0",
+                "symfony/process": "^7.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "6.0-dev"
+                    "dev-main": "7.0-dev"
                 }
             },
             "autoload": {
@@ -7933,7 +7932,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/6.0.2"
+                "source": "https://github.com/sebastianbergmann/diff/tree/7.0.0"
             },
             "funding": [
                 {
@@ -7941,7 +7940,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-03T04:53:05+00:00"
+            "time": "2025-02-07T04:55:46+00:00"
         },
         {
             "name": "symfony/clock",
