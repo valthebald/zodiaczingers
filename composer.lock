@@ -3830,17 +3830,17 @@
         },
         {
             "name": "drupal/mcp",
-            "version": "1.1.0",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/mcp.git",
-                "reference": "1.1.0"
+                "reference": "1.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/mcp-1.1.0.zip",
-                "reference": "1.1.0",
-                "shasum": "cae4f66483b336cb63f350d946b0571a6a1be45e"
+                "url": "https://ftp.drupal.org/files/projects/mcp-1.2.3.zip",
+                "reference": "1.2.3",
+                "shasum": "52819139edefae6b6ca9e44bb849e72ed1a2135a"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
@@ -3849,17 +3849,19 @@
                 "php": ">=8.1"
             },
             "require-dev": {
-                "drupal/ai": "1.1.x-dev@dev",
-                "drupal/ai_agents": "1.1.x-dev@dev"
+                "drupal/ai": "^1.1",
+                "drupal/ai_agents": "^1.1",
+                "drupal/jsonapi_schema": "^1.0",
+                "drupal/tool": "^1.0@alpha"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.0",
-                    "datestamp": "1749566301",
+                    "version": "1.2.3",
+                    "datestamp": "1763108058",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
